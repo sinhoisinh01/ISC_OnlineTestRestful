@@ -2,138 +2,67 @@ package isc.intake2.online_test.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+@Entity
+@Table(name="user")
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String account;
-	private String password;
-	private String firstname;
-	private String lastname;
-	private String DOB;
-	private boolean gender;
-	private String mail;
-	private String phone;
-	private boolean isActive;
-	private Date date;
 	
-	public User() {
-		super();
-	}
-
-	/**
-	 * @param id
-	 * @param account
-	 * @param password
-	 * @param firstname
-	 * @param lastname
-	 * @param dOB
-	 * @param gender
-	 * @param mail
-	 * @param phone
-	 * @param isActive
-	 */
-	@SuppressWarnings("deprecation")
-	public User(long id, String account, String password, String firstname, String lastname, String dOB, boolean gender,
-			String mail, String phone, boolean isActive) {
-		super();
-		this.id = id;
-		this.account = account;
-		this.password = password;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.DOB = dOB;
-		this.gender = gender;
-		this.mail = mail;
-		this.phone = phone;
-		this.isActive = isActive;
-		this.date = new Date(2017,4,15);
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getAccount() {
-		return account;
-	}
-
-	public void setAccount(String account) {
-		this.account = account;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-	public String getDOB() {
-		return DOB;
-	}
-
-	public void setDOB(String dOB) {
-		DOB = dOB;
-	}
-
-	public boolean getGender() {
-		return gender;
-	}
-
-	public void setGender(boolean gender) {
-		this.gender = gender;
-	}
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public boolean getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	@Size(min = 3, max = 50)
+	@Column(name = "user_name",
+			unique = true,
+			nullable = false,
+			length = 50)
+	private String userName;
 	
+	@Size(min = 6, max = 50)
+	@Column(name = "enc_password",
+			nullable = false,
+			length = 50)
+	private String userEncPassword;
+	
+	@Column(columnDefinition="nvarchar(50)",
+			name = "first_name",
+			nullable = true)
+	private String userFirstName;
+	
+	@Column(columnDefinition="nvarchar(100)",
+			name = "last_name",
+			nullable = true)
+	private String userLastName;
+	
+	@Column(name = "dob",
+			nullable = true)
+	private Date userDOB;
+	
+	@Column(name = "gender",
+			nullable = true)
+	private Boolean userGender;
+	
+	@Column(name = "email",
+			nullable = true,
+			length = 50)
+	private String userEmail;
+	
+	@Column(name = "phone",
+			nullable = true,
+			length = 50)
+	private String userPhone;
+	
+	@Column(name = "is_active",
+			nullable = true)
+	private Boolean userIsActive;
+	
+	@Column(name = "date",
+			nullable = true)
+	private Date userDate;
 }
