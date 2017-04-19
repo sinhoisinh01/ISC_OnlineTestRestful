@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan({ "isc.intake2.online_test.configurations" })
 @PropertySource(value = { "classpath:application.properties" })
-public class HibernateConfiguration {
+public class HibernateConfig {
  
     @Autowired
     private Environment environment;

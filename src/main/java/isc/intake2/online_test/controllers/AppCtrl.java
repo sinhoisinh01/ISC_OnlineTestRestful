@@ -22,7 +22,7 @@ import isc.intake2.online_test.services.UserServiceImpl;
  
 @RestController
 @RequestMapping("/")
-public class AppController {
+public class AppCtrl {
  
     @Autowired
     UserServiceImpl service;

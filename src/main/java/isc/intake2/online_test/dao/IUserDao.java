@@ -13,6 +13,9 @@ public interface IUserDao {
 	
 	void deleteUser(Long id);
 	
+	
 	List<User> findAllUsers();
+	
+	void deleteAllUsers();
 	
 }

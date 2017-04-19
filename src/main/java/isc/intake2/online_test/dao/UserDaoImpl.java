@@ -22,6 +22,10 @@ public class UserDaoImpl extends AbstractDaoImpl<Long, User> implements IUserDao
 	}
 	
 	public void deleteUser(Long id){
+		deleteUser(id);
+	}
+	
+	public void deleteAllUsers(){
 		
 	}
 	

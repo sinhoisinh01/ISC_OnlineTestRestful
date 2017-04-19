@@ -37,6 +37,7 @@ public abstract class AbstractDaoImpl<PK extends Serializable, T> implements IAb
         getSession().persist(entity);
     }
     
+    
     @Override
     public void delete(T entity) {
         getSession().delete(entity);
