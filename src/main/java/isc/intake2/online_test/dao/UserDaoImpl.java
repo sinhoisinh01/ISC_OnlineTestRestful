@@ -21,13 +21,10 @@ public class UserDaoImpl extends AbstractDaoImpl<Long, User> implements IUserDao
 		persist(user);
 	}
 	
-	public void deleteUser(Long id){
-		deleteUser(id);
+	public void deleteUser(User user){
+		delete(user);
 	}
 	
-	public void deleteAllUsers(){
-		
-	}
 	
 	@SuppressWarnings("unchecked")
 	public List<User> findAllUsers(){

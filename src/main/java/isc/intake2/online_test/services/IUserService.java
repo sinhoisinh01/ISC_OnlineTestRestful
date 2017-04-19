@@ -13,10 +13,9 @@ public interface IUserService {
 	
 	void updateUser(User user);
 	
-	void deleteUserById(Long id);
+	void deleteUser(User user);
 
 	List<User> findAllUsers();
 	
-	void deleteAllUsers();
 	
 }

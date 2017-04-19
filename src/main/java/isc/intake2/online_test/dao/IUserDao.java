@@ -11,11 +11,9 @@ public interface IUserDao {
 	
 	void saveUser(User user);
 	
-	void deleteUser(Long id);
-	
+	void deleteUser(User user);
 	
 	List<User> findAllUsers();
 	
-	void deleteAllUsers();
 	
 }
