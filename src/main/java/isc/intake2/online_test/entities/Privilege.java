@@ -1,10 +1,16 @@
+//Hong
 package isc.intake2.online_test.entities;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -39,4 +45,10 @@ public class Privilege {
 	@Column(name = "pri_note",
 			length = 400)
 	private String priNote;
+	
+	@OneToMany(mappedBy="privilege", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Collection<Permission> permissions;
+	
+	@OneToMany(mappedBy="privilege", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Collection<RelativePrivelege> relativePriveleges;
 }

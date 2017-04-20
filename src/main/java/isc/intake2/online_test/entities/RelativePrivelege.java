@@ -10,18 +10,33 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "permissions")
-public class Permission {
+@Table(name = "relative_priveleges")
+public class RelativePrivelege {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name = "per_is_read_only",
-			columnDefinition="tinyint(1) default 0")
-	private boolean perIsReadOnly;
+	@Size(min = 6, max = 100)
+	@Column(name = "rel_name",
+			length = 100,
+			nullable = false)
+	private String relName;
+	
+	@Size(min = 10, max = 50)
+	@Column(name = "rel_url",
+			length = 50,
+			nullable = false)
+	private String relUrl;
+	
+	@Size(max = 400)
+	@Column(name = "rel_note",
+			nullable = true,
+			length = 400)
+	private String relNote;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id", insertable = false, updatable = false)
