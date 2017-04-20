@@ -50,5 +50,7 @@ public class Privilege {
 	private Collection<Permission> permissions;
 	
 	@OneToMany(mappedBy="privilege", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Collection<RelativePrivelege> relativePriveleges;
+	private Collection<RelativePrivilege> relativePriveleges;
+	
+	
 }

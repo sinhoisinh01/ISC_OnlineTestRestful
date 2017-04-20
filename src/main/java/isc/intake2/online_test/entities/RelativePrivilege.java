@@ -13,8 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "relative_priveleges")
-public class RelativePrivelege {
+@Table(name = "relative_privileges")
+public class RelativePrivilege {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

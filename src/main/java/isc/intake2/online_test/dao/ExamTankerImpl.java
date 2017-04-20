@@ -26,6 +26,7 @@ public class ExamTankerImpl extends AbstractDaoImpl<Long, ExamTaker> implements 
 		delete(examTaker);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<ExamTaker> findAllExamTakers(){
 		Criteria criteria = createEntityCriteria();
 		return (List<ExamTaker>) criteria.list();

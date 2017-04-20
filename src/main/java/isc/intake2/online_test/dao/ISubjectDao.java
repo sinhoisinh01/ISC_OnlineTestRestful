@@ -9,10 +9,6 @@ public interface ISubjectDao {
 
 	Subject findById(long id);
 	
-	Subject findBySubName(String name);
-	
-	Subject findBySubId(String subId);
-	
 	void saveSubject(Subject subject);
 	
 	void deleteSubject(Subject subject);

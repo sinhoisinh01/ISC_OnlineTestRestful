@@ -15,14 +15,6 @@ public class SubjectDaoImpl extends AbstractDaoImpl<Long, Subject> implements IS
 		return getByKey(id);
 	}
 	
-	public Subject findBySubName(String name){
-		return findBySubName(name);
-	}
-	
-	public Subject findBySubId(String subId){
-		return findBySubId(subId);
-	}
-	
 	public void saveSubject(Subject subject){
 		persist(subject);
 	}

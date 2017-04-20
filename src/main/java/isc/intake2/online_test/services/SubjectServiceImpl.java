@@ -1,3 +1,4 @@
+//Hong
 package isc.intake2.online_test.services;
 
 import java.util.List;
@@ -20,16 +21,12 @@ public class SubjectServiceImpl implements ISubjectService{
 	public Subject findById(long id){
 		return subjectDao.findById(id);
 	}
-	
-	public Subject findBySubName(String name){
-		return subjectDao.findBySubName(name);
-	}
-	
-	public Subject findBySubId(String subId){
-		return subjectDao.findBySubId(subId);
-	}
-	
+
 	public void saveSubject(Subject subject){
+		subjectDao.saveSubject(subject);
+	}
+	
+	public void updateSubject(Subject subject){
 		subjectDao.saveSubject(subject);
 	}
 	
