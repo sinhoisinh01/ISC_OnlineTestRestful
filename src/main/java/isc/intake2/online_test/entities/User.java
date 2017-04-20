@@ -1,3 +1,4 @@
+//Hong
 package isc.intake2.online_test.entities;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
