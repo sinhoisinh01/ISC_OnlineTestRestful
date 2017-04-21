@@ -4,9 +4,10 @@ package isc.intake2.online_test.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.springframework.stereotype.Repository;
 
 import isc.intake2.online_test.entities.RelativePrivilege;
-
+@Repository("relativePrivilegeDao")
 public class RelativePrivilegeDaoImpl extends AbstractDaoImpl<Long, RelativePrivilege> implements IRelativePrivilegeDao{
 
 	public RelativePrivilege findById(long id){

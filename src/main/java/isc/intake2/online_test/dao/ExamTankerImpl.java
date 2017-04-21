@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import isc.intake2.online_test.entities.ExamTaker;
 
-@Repository("examTaker")
+@Repository("examTakerDao")
 public class ExamTankerImpl extends AbstractDaoImpl<Long, ExamTaker> implements IExamTakerDao{
 
 	public ExamTaker findById(long id){

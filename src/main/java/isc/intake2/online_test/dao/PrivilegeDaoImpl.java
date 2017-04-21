@@ -4,9 +4,10 @@ package isc.intake2.online_test.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.springframework.stereotype.Repository;
 
 import isc.intake2.online_test.entities.Privilege;
-
+@Repository("privilegeDao")
 public class PrivilegeDaoImpl extends AbstractDaoImpl<Long, Privilege> implements IPrivilegeDao{
 
 	public Privilege findById(long id){
