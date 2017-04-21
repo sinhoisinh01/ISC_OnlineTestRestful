@@ -7,7 +7,7 @@ import isc.intake2.online_test.entities.User;
 public interface IUserDao {
 	User findById(Long id);
 
-	User findByName(String name);
+	User findByName(String username);
 	
 	void saveUser(User user);
 	

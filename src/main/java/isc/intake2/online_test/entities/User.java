@@ -4,21 +4,33 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@Size(min = 3, max = 50)
-	@Column(name = "user_name",
+	@Column(name = "account",
 			unique = true,
 			nullable = false,
 			length = 50)
@@ -30,13 +42,13 @@ public class User {
 			length = 50)
 	private String userEncPassword;
 	
-	@Column(columnDefinition="nvarchar(50)",
-			name = "first_name",
+	@Column(name="first_name",
+			length = 50,
 			nullable = true)
 	private String userFirstName;
 	
-	@Column(columnDefinition="nvarchar(100)",
-			name = "last_name",
+	@Column(name="last_name",
+			length = 100,
 			nullable = true)
 	private String userLastName;
 	
@@ -47,7 +59,7 @@ public class User {
 	@Column(name = "gender",
 			nullable = true)
 	private Boolean userGender;
-	
+
 	@Column(name = "email",
 			nullable = true,
 			length = 50)
@@ -65,4 +77,106 @@ public class User {
 	@Column(name = "date",
 			nullable = true)
 	private Date userDate;
+	
+	@JsonManagedReference
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_type_id", nullable = false)
+	private UserType userType;
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserEncPassword() {
+		return userEncPassword;
+	}
+
+	public void setUserEncPassword(String userEncPassword) {
+		this.userEncPassword = userEncPassword;
+	}
+
+	public String getUserFirstName() {
+		return userFirstName;
+	}
+
+	public void setUserFirstName(String userFirstName) {
+		this.userFirstName = userFirstName;
+	}
+
+	public String getUserLastName() {
+		return userLastName;
+	}
+
+	public void setUserLastName(String userLastName) {
+		this.userLastName = userLastName;
+	}
+
+	public Date getUserDOB() {
+		return userDOB;
+	}
+
+	public void setUserDOB(Date userDOB) {
+		this.userDOB = userDOB;
+	}
+
+	public Boolean getUserGender() {
+		return userGender;
+	}
+
+	public void setUserGender(Boolean userGender) {
+		this.userGender = userGender;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+
+	public Boolean getUserIsActive() {
+		return userIsActive;
+	}
+
+	public void setUserIsActive(Boolean userIsActive) {
+		this.userIsActive = userIsActive;
+	}
+
+	public Date getUserDate() {
+		return userDate;
+	}
+
+	public void setUserDate(Date userDate) {
+		this.userDate = userDate;
+	}
+	
+	public UserType getUserType(){
+		return this.userType;
+	}
+	
+	public void setUserType(UserType userType)
+	{
+		this.userType = userType;
+	}
 }

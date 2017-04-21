@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
  
 public abstract class AbstractDaoImpl<PK extends Serializable, T> implements IAbstractDao<PK,T>{
      
@@ -17,7 +18,7 @@ public abstract class AbstractDaoImpl<PK extends Serializable, T> implements IAb
     public AbstractDaoImpl(){
         this.persistentClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];
     }
-     
+    
     @Autowired
     private SessionFactory sessionFactory;
  

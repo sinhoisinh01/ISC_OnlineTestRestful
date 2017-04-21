@@ -1,13 +1,17 @@
 package isc.intake2.online_test.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
@@ -15,19 +19,24 @@ import org.springframework.security.oauth2.provider.approval.TokenStoreUserAppro
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
  
 @Configuration
 @EnableWebSecurity
+@EnableTransactionManagement 
 public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
  
     @Autowired
-    private ClientDetailsService clientDetailsService;
-     
+    @Qualifier("customUserDetailsService")
+    private UserDetailsService userDetailsService;
+    
     @Autowired
-    public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-        .withUser("bill").password("abc123").roles("ADMIN").and()
-        .withUser("bob").password("abc123").roles("USER");
+    private ClientDetailsService clientDetailsService;
+    
+    @Autowired
+    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService);
+        auth.authenticationProvider(authenticationProvider());
     }
  
     @Override
@@ -36,7 +45,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .csrf().disable()
         .anonymous().disable()
         .authorizeRequests()
-        .antMatchers("/oauth/token").permitAll();
+        .antMatchers("/oauth/token","/admin/login").permitAll();
     }
  
     @Override
@@ -68,5 +77,14 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
         store.setTokenStore(tokenStore);
         return store;
     }
-     
+    
+    @Bean
+    @Autowired
+    public DaoAuthenticationProvider authenticationProvider() throws Exception{
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        authenticationProvider.setUserDetailsService(userDetailsService);
+        authenticationProvider.setPasswordEncoder(new Md5PasswordEncoder());
+
+        return authenticationProvider;
+    }
 }

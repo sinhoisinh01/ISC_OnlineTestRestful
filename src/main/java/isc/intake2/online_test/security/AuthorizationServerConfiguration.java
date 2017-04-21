@@ -30,7 +30,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
  
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
- 
+    	
         clients.inMemory()
             .withClient("my-trusted-client")
             .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")

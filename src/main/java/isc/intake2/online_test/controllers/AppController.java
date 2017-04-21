@@ -21,11 +21,12 @@ import isc.intake2.online_test.entities.User;
 import isc.intake2.online_test.services.UserServiceImpl;
  
 @RestController
-@RequestMapping("/")
+@RequestMapping(value = "/",
+				produces="application/json")
 public class AppController {
  
     @Autowired
-    UserServiceImpl service;
+    UserServiceImpl userService;
      
     @Autowired
     MessageSource messageSource;
@@ -34,12 +35,13 @@ public class AppController {
      * This method will list all existing employees.
      */
     @RequestMapping(value = {"/user/"}, method = RequestMethod.GET)
-    public ResponseEntity<List<User>> listAllUsers() {
-        List<User> users = service.findAllUsers();
-        if(users.isEmpty()){
-            return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+    public ResponseEntity<User> listAllUsers() {
+        User users = userService.findByName("hggntg");
+        if(users == null){
+            return new ResponseEntity<User>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
         }
-        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+        System.out.println(users.getUserType().getUserTypeName());
+        return new ResponseEntity<User>(users, HttpStatus.OK);
     }
  
 //    /*
