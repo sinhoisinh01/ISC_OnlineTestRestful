@@ -1,3 +1,4 @@
+//Hong
 package isc.intake2.online_test.entities;
 
 import java.util.Date;
@@ -82,7 +83,7 @@ public class User {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_type_id", nullable = false)
 	private UserType userType;
-	
+
 	public long getId() {
 		return id;
 	}
@@ -178,5 +179,24 @@ public class User {
 	public void setUserType(UserType userType)
 	{
 		this.userType = userType;
+	}
+	public User() {
+		super();
+	}
+
+	public User(long id, String userName, String userEncPassword, String userFirstName, String userLastName,
+			Date userDOB, Boolean userGender, String userEmail, String userPhone, Boolean userIsActive, Date userDate) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.userEncPassword = userEncPassword;
+		this.userFirstName = userFirstName;
+		this.userLastName = userLastName;
+		this.userDOB = userDOB;
+		this.userGender = userGender;
+		this.userEmail = userEmail;
+		this.userPhone = userPhone;
+		this.userIsActive = userIsActive;
+		this.userDate = userDate;
 	}
 }

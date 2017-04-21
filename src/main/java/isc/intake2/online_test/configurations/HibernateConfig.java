@@ -18,7 +18,7 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 @Configuration
 @ComponentScan({ "isc.intake2.online_test.configurations" })
 @PropertySource(value = { "classpath:application.properties" })
-public class HibernateConfiguration {
+public class HibernateConfig {
  
     @Autowired
     private Environment environment;

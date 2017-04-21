@@ -1,3 +1,4 @@
+//Hong
 package isc.intake2.online_test.dao;
 
 import java.util.List;
@@ -11,8 +12,9 @@ public interface IUserDao {
 	
 	void saveUser(User user);
 	
-	void deleteUser(Long id);
+	void deleteUser(User user);
 	
 	List<User> findAllUsers();
+	
 	
 }

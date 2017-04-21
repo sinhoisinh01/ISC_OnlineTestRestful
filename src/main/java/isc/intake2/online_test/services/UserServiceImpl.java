@@ -26,19 +26,15 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	public void saveUser(User user){
-		
+		userDao.saveUser(user);
 	}
 	
 	public void updateUser(User user){
-		
+		userDao.saveUser(user);
 	}
 
-	public void deleteUserById(Long id){
-		
-	}
-	
-	public void deleteAllUsers(){
-		
+	public void deleteUser(User user){
+		userDao.deleteUser(user);
 	}
 	
 	public List<User> findAllUsers(){

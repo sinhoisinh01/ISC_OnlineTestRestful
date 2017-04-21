@@ -23,8 +23,7 @@ import isc.intake2.online_test.services.UserServiceImpl;
 @RestController
 @RequestMapping(value = "/",
 				produces="application/json")
-public class AppController {
- 
+public class AppCtrl {
     @Autowired
     UserServiceImpl userService;
      
