@@ -33,7 +33,7 @@ public class Subject {
 	
 	@Size(min = 3, max = 100)
 	@Column(name = "sub_name",
-			nullable = false,
+			nullable = true,
 			length = 100)
 	private String subName;
 	
