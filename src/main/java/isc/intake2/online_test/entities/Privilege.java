@@ -23,26 +23,26 @@ public class Privilege {
 	private long id;
 	
 	@Size(min = 6, max = 200)
-	@Column(name = "pri_name",
+	@Column(name = "name",
 			nullable = false,
 			length = 200)
 	private String priName;
 	
 	@Size(min = 6, max = 100)
-	@Column(name = "pri_url",
+	@Column(name = "url",
 			nullable = false,
 			length = 100)
 	private String priUrl;
 	
-	@Column(name = "pri_parent",
+	@Column(name = "parent",
 			nullable = false)
 	private Integer priParent;
 	
-	@Column(name = "pri_order")
+	@Column(name = "order")
 	private Integer priOrder;
 	
 	@Size(min = 0, max = 400)
-	@Column(name = "pri_note",
+	@Column(name = "note",
 			length = 400)
 	private String priNote;
 	

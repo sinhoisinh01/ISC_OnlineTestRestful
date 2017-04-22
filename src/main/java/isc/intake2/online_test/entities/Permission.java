@@ -27,6 +27,10 @@ public class Permission {
 	@JoinColumn(name = "privilege_id")
 	private Privilege privilege;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_type_id")
+	private UserType userType;
+	
 	public long getId() {
 		return id;
 	}
@@ -51,6 +55,14 @@ public class Permission {
 		this.privilege = privilege;
 	}
 
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
+
 	public Permission() {
 		super();
 	}
@@ -66,6 +78,14 @@ public class Permission {
 		this.id = id;
 		this.perIsReadOnly = perIsReadOnly;
 		this.privilege = privilege;
+	}
+
+	public Permission(long id, boolean perIsReadOnly, Privilege privilege, UserType userType) {
+		super();
+		this.id = id;
+		this.perIsReadOnly = perIsReadOnly;
+		this.privilege = privilege;
+		this.userType = userType;
 	}
 	
 }

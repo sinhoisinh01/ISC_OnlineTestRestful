@@ -21,19 +21,19 @@ public class RelativePrivilege {
 	private long id;
 	
 	@Size(min = 6, max = 100)
-	@Column(name = "rel_name",
+	@Column(name = "name",
 			length = 100,
 			nullable = false)
 	private String relName;
 	
 	@Size(min = 10, max = 50)
-	@Column(name = "rel_url",
+	@Column(name = "url",
 			length = 50,
 			nullable = false)
 	private String relUrl;
 	
 	@Size(max = 400)
-	@Column(name = "rel_note",
+	@Column(name = "note",
 			nullable = true,
 			length = 400)
 	private String relNote;

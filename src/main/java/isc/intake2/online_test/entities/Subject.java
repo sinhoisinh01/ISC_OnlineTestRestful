@@ -32,7 +32,7 @@ public class Subject {
 	private String subId;
 	
 	@Size(min = 3, max = 100)
-	@Column(name = "sub_name",
+	@Column(name = "name",
 			nullable = true,
 			length = 100)
 	private String subName;
