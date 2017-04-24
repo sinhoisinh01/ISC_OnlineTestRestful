@@ -4,13 +4,14 @@ package isc.intake2.online_test.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import isc.intake2.online_test.entities.Subject;
 
 @Repository("subjectDao")
 public class SubjectDaoImpl extends AbstractDaoImpl<Long, Subject> implements ISubjectDao {
-
+	 
 	public Subject findById(long id){
 		return getByKey(id);
 	}
@@ -20,12 +21,20 @@ public class SubjectDaoImpl extends AbstractDaoImpl<Long, Subject> implements IS
 	}
 	
 	public void deleteSubject(Subject subject){
-		deleteSubject(subject);
+		delete(subject);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Subject> findAllSubjects(){
 		Criteria criteria = createEntityCriteria();
-		return (List<Subject>) criteria.list();
+		criteria.setFirstResult(0);
+		criteria.setMaxResults(10);
+		return (List<Subject>)criteria.list();
 	}
+
+	@Override
+	public boolean isSubjectExist(Subject subject) {
+		return findById(subject.getId()) != null;
+	}
+	
 }

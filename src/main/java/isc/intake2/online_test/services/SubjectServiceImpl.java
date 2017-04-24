@@ -37,4 +37,8 @@ public class SubjectServiceImpl implements ISubjectService{
 	public List<Subject> findAllSubjects(){
 		return subjectDao.findAllSubjects();
 	}
+	
+	public boolean isSubjectExist(Subject subject){
+		return subjectDao.isSubjectExist(subject);
+	}
 }

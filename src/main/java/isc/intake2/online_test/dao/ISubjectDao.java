@@ -15,4 +15,5 @@ public interface ISubjectDao {
 	
 	List<Subject> findAllSubjects();
 
+	boolean isSubjectExist(Subject subject);
 }

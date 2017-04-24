@@ -16,4 +16,6 @@ public interface ISubjectService {
 	void deleteSubject(Subject subject);
 	
 	List<Subject> findAllSubjects();
+	
+	boolean isSubjectExist(Subject subject);
 }
