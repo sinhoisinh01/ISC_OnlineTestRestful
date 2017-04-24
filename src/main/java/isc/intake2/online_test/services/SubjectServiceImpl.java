@@ -34,8 +34,8 @@ public class SubjectServiceImpl implements ISubjectService{
 		subjectDao.deleteSubject(subject);
 	}
 	
-	public List<Subject> findAllSubjects(){
-		return subjectDao.findAllSubjects();
+	public List<Subject> findAllSubjectsParent(){
+		return subjectDao.findAllSubjectsParent();
 	}
 	
 	public boolean isSubjectExist(Subject subject){

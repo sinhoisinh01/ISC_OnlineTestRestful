@@ -25,10 +25,9 @@ public class SubjectDaoImpl extends AbstractDaoImpl<Long, Subject> implements IS
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Subject> findAllSubjects(){
+	public List<Subject> findAllSubjectsParent(){
 		Criteria criteria = createEntityCriteria();
-		criteria.setFirstResult(0);
-		criteria.setMaxResults(10);
+		criteria.add(Restrictions.sqlRestriction("{alias}.sub_id is null"));
 		return (List<Subject>)criteria.list();
 	}
 

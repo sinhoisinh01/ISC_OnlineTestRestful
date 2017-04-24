@@ -24,18 +24,18 @@ public class SubjectCtrl {
 	@Autowired
 	SubjectServiceImpl subjectService;
 	
-	//-------------------Retrieve All Subjects--------------------------------------------------------
+	//-------------------Retrieve All Subjects Parent--------------------------------------------------------
 	
 	@RequestMapping(value = "/subject/", method = RequestMethod.GET)
-	public ResponseEntity<List<Subject>> listAllSubject(){
-		List<Subject> subjects = subjectService.findAllSubjects();
+	public ResponseEntity<List<Subject>> listAllSubjectsParent(){
+		List<Subject> subjects = subjectService.findAllSubjectsParent();
 		if(subjects.isEmpty()){
 			return new ResponseEntity<List<Subject>>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<Subject>>(subjects, HttpStatus.OK);
 	}
 	
-	//-------------------Retrieve One Subject--------------------------------------------------------
+	//-------------------Retrieve First Subject Child--------------------------------------------------------
 	@RequestMapping(value = "/subject/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Subject> getSubject(@PathVariable("id") long id){
 		Subject subject = subjectService.findById(id);
