@@ -26,8 +26,8 @@ public class PermissionServiceImpl implements IPermissionService{
 		permissionDao.savePermission(permission);
 	}
 	
-	public void updatePermission(Permission permission){
-		permissionDao.savePermission(permission);
+	public void saveOrUpdatePermission(Permission permission){
+		permissionDao.saveOrUpdatePermission(permission);
 	}
 	
 	public void deletePermission(Permission permission){

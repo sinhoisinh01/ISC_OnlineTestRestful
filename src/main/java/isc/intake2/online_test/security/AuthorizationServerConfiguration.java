@@ -11,13 +11,16 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+
+import isc.intake2.online_test.configurations.CORSFilter;
  
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
  
     private static String REALM="MY_OAUTH_REALM";
-     
+    private CORSFilter corsFilter = new CORSFilter();
+    
     @Autowired
     private TokenStore tokenStore;
  
@@ -49,6 +52,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
  
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+    	oauthServer.addTokenEndpointAuthenticationFilter(corsFilter);
         oauthServer.realm(REALM+"/client");
     }
  

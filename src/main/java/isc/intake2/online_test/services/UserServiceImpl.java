@@ -29,8 +29,8 @@ public class UserServiceImpl implements IUserService {
 		userDao.saveUser(user);
 	}
 	
-	public void updateUser(User user){
-		userDao.saveUser(user);
+	public void saveOrUpdate(User user){
+		userDao.saveOrUpdate(user);
 	}
 
 	public void deleteUser(User user){

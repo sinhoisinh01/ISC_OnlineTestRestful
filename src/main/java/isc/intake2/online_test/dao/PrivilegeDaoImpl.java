@@ -18,6 +18,10 @@ public class PrivilegeDaoImpl extends AbstractDaoImpl<Long, Privilege> implement
 		persist(privilege);
 	}
 	
+	public void saveOrUpdatePrivilege(Privilege privilege){
+		saveOrUpdate(privilege);
+	}
+	
 	public void deletePrivilege(Privilege privilege){
 		delete(privilege);
 	}

@@ -25,8 +25,8 @@ public class RelativePrivilegeServiceImpl implements IRelativePrivilegeService{
 		relativePrivilegeService.saveRelativePrevilege(relativePrivilege);
 	}
 	
-	public void updateRelativePrevilege(RelativePrivilege relativePrivilege){
-		relativePrivilegeService.saveRelativePrevilege(relativePrivilege);
+	public void saveOrUpdateRelativePrevilege(RelativePrivilege relativePrivilege){
+		relativePrivilegeService.saveOrUpdateRelativePrevilege(relativePrivilege);
 	}
 	
 	public void deleteRelativePrevilege(RelativePrivilege relativePrivilege){
