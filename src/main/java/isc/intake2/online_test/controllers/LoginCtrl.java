@@ -7,13 +7,12 @@ import isc.intake2.online_test.entities.User;
 
 @RestController
 @RequestMapping(
-	value = "/login", 
+	value = "/", 
 	produces = "application/json;charset=UTF-8"
 )
 public class LoginCtrl {
-	@RequestMapping(produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = {"admin/login","login"},produces = "application/json;charset=UTF-8")
 	public User get() {
 		return null;
-//		return new User(1, "sinhoisinh", "123456", "Sinh", "Đoàn", "01/04/1995", false, "doanphucsinh@gmail.com", "0907 859 233", true);
 	}
 }

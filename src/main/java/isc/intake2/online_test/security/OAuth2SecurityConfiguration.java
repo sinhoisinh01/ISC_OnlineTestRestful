@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -20,6 +21,7 @@ import org.springframework.security.oauth2.provider.request.DefaultOAuth2Request
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.cors.CorsUtils;
  
 @Configuration
 @EnableWebSecurity
@@ -44,8 +46,9 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
         .csrf().disable()
         .anonymous().disable()
-        .authorizeRequests()
-        .antMatchers("/oauth/token","/admin/login").permitAll();
+        .authorizeRequests()  
+        .antMatchers("/oauth/token")
+        .permitAll();
     }
  
     @Override
