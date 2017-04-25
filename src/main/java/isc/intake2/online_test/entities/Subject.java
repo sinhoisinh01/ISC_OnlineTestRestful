@@ -28,7 +28,7 @@ public class Subject {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Size(min = 6, max = 20)
+	@Size(max = 20)
 	@Column(name = "sub_id",
 			nullable = true,
 			length = 20)
@@ -36,7 +36,7 @@ public class Subject {
 	
 	@Size(min = 3, max = 100)
 	@Column(name = "name",
-			nullable = true,
+			nullable = false,
 			length = 100)
 	private String subName;
 	

@@ -1,3 +1,4 @@
+//Hong
 package isc.intake2.online_test.controllers;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public class SubjectCtrl {
 		return new ResponseEntity<Subject>(subject, HttpStatus.OK);
 	}
 	
-	//-------------------Create a User--------------------------------------------------------
+	//-------------------Create a subject--------------------------------------------------------
     
     @RequestMapping(value = "/subject/", method = RequestMethod.POST)
     public ResponseEntity<Void> createSubject(@RequestBody Subject subject, UriComponentsBuilder ucBuilder){
@@ -59,6 +60,7 @@ public class SubjectCtrl {
     	return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
     
+  //-------------------Update a subject--------------------------------------------------------
     @RequestMapping(value = "/subject/{id}", method = RequestMethod.POST)
     public ResponseEntity<Subject> updateSubject(@PathVariable("id") long id, @RequestBody Subject subject){
     	Subject currentSubject = subjectService.findById(id);
@@ -67,6 +69,7 @@ public class SubjectCtrl {
     	}
     	currentSubject.setSubId(subject.getSubId());
     	currentSubject.setSubName(subject.getSubName());
+    	subjectService.saveOrUpdateSubject(currentSubject);
     	return new ResponseEntity<Subject>(HttpStatus.OK);
     }
     

@@ -11,7 +11,7 @@ public interface ISubjectService {
 
 	void saveSubject(Subject subject);
 	
-	void updateSubject(Subject subject);
+	void saveOrUpdateSubject(Subject subject);
 	
 	void deleteSubject(Subject subject);
 	

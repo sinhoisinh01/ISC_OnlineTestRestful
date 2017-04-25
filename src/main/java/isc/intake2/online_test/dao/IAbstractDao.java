@@ -9,5 +9,6 @@ public interface IAbstractDao <PK extends Serializable, T>{
 	void delete(T entity);
 
 	T getByKey(PK key);
-
+	
+	void saveOrUpdate(T entity);
 }

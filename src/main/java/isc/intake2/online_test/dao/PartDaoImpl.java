@@ -23,6 +23,10 @@ public class PartDaoImpl extends AbstractDaoImpl<Long, Part> implements IPartDao
 		persist(part);
 	}
 	
+	public void saveOrUpdatePart(Part part){
+		saveOrUpdate(part);
+	}
+	
 	public void deletePart(Part part){
 		delete(part);
 	}

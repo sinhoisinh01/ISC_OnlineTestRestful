@@ -11,7 +11,7 @@ public interface IRelativePrivilegeService {
 	
 	void saveRelativePrevilege(RelativePrivilege relativePrivilege);
 	
-	void updateRelativePrevilege(RelativePrivilege relativePrivilege);
+	void saveOrUpdateRelativePrevilege(RelativePrivilege relativePrivilege);
 	
 	void deleteRelativePrevilege(RelativePrivilege relativePrivilege);
 	

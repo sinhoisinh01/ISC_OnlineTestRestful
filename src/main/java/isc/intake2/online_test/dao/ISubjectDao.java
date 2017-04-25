@@ -11,6 +11,8 @@ public interface ISubjectDao {
 	
 	void saveSubject(Subject subject);
 	
+	void saveOrUpdateSubject(Subject subject);
+	
 	void deleteSubject(Subject subject);
 	
 	List<Subject> findAllSubjectsParent();

@@ -25,6 +25,10 @@ public class UserDaoImpl extends AbstractDaoImpl<Long, User> implements IUserDao
 		persist(user);
 	}
 	
+	public void saveOrUpdate(User user){
+		saveOrUpdate(user);
+	}
+	
 	public void deleteUser(User user){
 		delete(user);
 	}

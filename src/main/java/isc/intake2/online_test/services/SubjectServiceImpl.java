@@ -26,8 +26,8 @@ public class SubjectServiceImpl implements ISubjectService{
 		subjectDao.saveSubject(subject);
 	}
 	
-	public void updateSubject(Subject subject){
-		subjectDao.saveSubject(subject);
+	public void saveOrUpdateSubject(Subject subject){
+		subjectDao.saveOrUpdateSubject(subject);
 	}
 	
 	public void deleteSubject(Subject subject){

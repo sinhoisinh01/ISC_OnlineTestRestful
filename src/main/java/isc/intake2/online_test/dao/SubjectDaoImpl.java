@@ -20,6 +20,10 @@ public class SubjectDaoImpl extends AbstractDaoImpl<Long, Subject> implements IS
 		persist(subject);
 	}
 	
+	public void saveOrUpdateSubject(Subject subject){
+		saveOrUpdate(subject);
+	}
+	
 	public void deleteSubject(Subject subject){
 		delete(subject);
 	}

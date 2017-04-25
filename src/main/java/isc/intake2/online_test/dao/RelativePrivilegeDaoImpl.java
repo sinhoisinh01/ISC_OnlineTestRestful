@@ -18,6 +18,10 @@ public class RelativePrivilegeDaoImpl extends AbstractDaoImpl<Long, RelativePriv
 		persist(relativePrivilege);
 	}
 	
+	public void saveOrUpdateRelativePrevilege(RelativePrivilege relativePrivilege){
+		saveOrUpdate(relativePrivilege);
+	}
+	
 	public void deleteRelativePrevilege(RelativePrivilege relativePrivilege){
 		delete(relativePrivilege);
 	}

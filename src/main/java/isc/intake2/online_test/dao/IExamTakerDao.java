@@ -13,6 +13,8 @@ public interface IExamTakerDao {
 	
 	void saveExamTaker(ExamTaker examTaker);
 	
+	void saveOrUpdateExamTaker(ExamTaker examTaker);
+	
 	void deleteExamTaker(ExamTaker examTaker);
 	
 	List<ExamTaker> findAllExamTakers();
