@@ -38,6 +38,10 @@ public abstract class AbstractDaoImpl<PK extends Serializable, T> implements IAb
         getSession().persist(entity);
     }
     
+    @Override
+    public void saveOrUpdate(T entity){
+    	getSession().saveOrUpdate(entity);
+    }
     
     @Override
     public void delete(T entity) {
@@ -47,5 +51,6 @@ public abstract class AbstractDaoImpl<PK extends Serializable, T> implements IAb
     protected Criteria createEntityCriteria(){
         return getSession().createCriteria(persistentClass);
     }
+    
  
 }

@@ -11,6 +11,8 @@ public interface IPermissionDao {
 	
 	void savePermission(Permission permission);
 	
+	void saveOrUpdatePermission(Permission permission);
+	
 	void deletePermission(Permission permission);
 	
 	List<Permission> findAllPermissions();

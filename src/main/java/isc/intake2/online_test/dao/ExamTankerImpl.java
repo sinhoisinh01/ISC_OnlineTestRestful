@@ -22,6 +22,10 @@ public class ExamTankerImpl extends AbstractDaoImpl<Long, ExamTaker> implements 
 		persist(examTaker);
 	}
 	
+	public void saveOrUpdateExamTaker(ExamTaker examTaker){
+		saveOrUpdate(examTaker);
+	}
+	
 	public void deleteExamTaker(ExamTaker examTaker){
 		delete(examTaker);
 	}

@@ -11,7 +11,7 @@ public interface IUserService {
 	
 	void saveUser(User user);
 	
-	void updateUser(User user);
+	void saveOrUpdate(User user);
 	
 	void deleteUser(User user);
 

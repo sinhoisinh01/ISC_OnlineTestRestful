@@ -11,7 +11,7 @@ public interface IPrivilegeService {
 	
 	void savePrivilege(Privilege privilege);
 	
-	void updatePrivilege(Privilege privilege);
+	void saveOrUpdatePrivilege(Privilege privilege);
 	
 	void deletePrivilege(Privilege privilege);
 	

@@ -13,6 +13,8 @@ public interface IPartDao {
 	
 	void savePart(Part part);
 	
+	void saveOrUpdatePart(Part part);
+	
 	void deletePart(Part part);
 	
 	List<Part> findAllParts();

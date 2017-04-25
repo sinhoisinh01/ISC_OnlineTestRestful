@@ -11,7 +11,7 @@ public interface IPermissionService {
 	
 	void savePermission(Permission permission);
 	
-	public void updatePermission(Permission permission);
+	void saveOrUpdatePermission(Permission permission);
 	
 	void deletePermission(Permission permission);
 	

@@ -26,8 +26,8 @@ public class PrivilegeServiceImpl implements IPrivilegeService{
 		privilegeDao.savePrivilege(privilege);
 	}
 	
-	public void updatePrivilege(Privilege privilege){
-		privilegeDao.savePrivilege(privilege);
+	public void saveOrUpdatePrivilege(Privilege privilege){
+		privilegeDao.saveOrUpdatePrivilege(privilege);
 	}
 	
 	public void deletePrivilege(Privilege privilege){

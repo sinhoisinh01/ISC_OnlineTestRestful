@@ -12,6 +12,8 @@ public interface IUserDao {
 	
 	void saveUser(User user);
 	
+	void saveOrUpdate(User user);
+	
 	void deleteUser(User user);
 	
 	List<User> findAllUsers();

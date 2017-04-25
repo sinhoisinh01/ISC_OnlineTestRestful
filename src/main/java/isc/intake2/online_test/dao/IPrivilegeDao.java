@@ -11,6 +11,8 @@ public interface IPrivilegeDao {
 	
 	void savePrivilege(Privilege privilege);
 	
+	void saveOrUpdatePrivilege(Privilege privilege);
+	
 	void deletePrivilege(Privilege privilege);
 	
 	List<Privilege> findAllPrivileges();

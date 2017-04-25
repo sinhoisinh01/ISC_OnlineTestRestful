@@ -18,6 +18,10 @@ public class PermissionDaoImpl extends AbstractDaoImpl<Long, Permission> impleme
 		persist(permission);
 	}
 	
+	public void saveOrUpdatePermission(Permission permission){
+		saveOrUpdate(permission);
+	}
+	
 	public void deletePermission(Permission permission){
 		delete(permission);
 	}

@@ -11,6 +11,8 @@ public interface IRelativePrivilegeDao {
 	
 	void saveRelativePrevilege(RelativePrivilege relativePrivilege);
 	
+	void saveOrUpdateRelativePrevilege(RelativePrivilege relativePrivilege);
+	
 	void deleteRelativePrevilege(RelativePrivilege relativePrivilege);
 	
 	List<RelativePrivilege> findAllRelativePrivileges();
