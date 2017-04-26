@@ -19,7 +19,7 @@ import isc.intake2.online_test.services.UserServiceImpl;
 
 @RestController
 @RequestMapping(
-	value = "user",
+	value = "api/user",
 	produces="application/json"
 )
 public class UserCtrl {
