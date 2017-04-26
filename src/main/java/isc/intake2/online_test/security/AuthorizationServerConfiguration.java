@@ -18,8 +18,8 @@ import isc.intake2.online_test.configurations.CORSFilter;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
  
-    private static String REALM="MY_OAUTH_REALM";
-    private CORSFilter corsFilter = new CORSFilter();
+    private static String REALM = "MY_OAUTH_REALM";
+    
     
     @Autowired
     private TokenStore tokenStore;
@@ -52,8 +52,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
  
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-    	oauthServer.addTokenEndpointAuthenticationFilter(corsFilter);
-        oauthServer.realm(REALM+"/client");
+    	oauthServer.addTokenEndpointAuthenticationFilter(new CORSFilter());
+        oauthServer.realm(REALM + "/client");
     }
  
 }

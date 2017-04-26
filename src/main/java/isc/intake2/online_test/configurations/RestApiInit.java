@@ -23,5 +23,6 @@ public class RestApiInit implements WebApplicationInitializer {
  
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
+
     }
 }

@@ -12,14 +12,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import isc.intake2.online_test.configurations.CORSFilter;
 import isc.intake2.online_test.entities.User;
 import isc.intake2.online_test.services.UserServiceImpl;
- 
+
 @RestController
 @RequestMapping(value = "/api",
 				produces="application/json")
