@@ -71,11 +71,11 @@ public class UserTypeCtrl {
       
     //------------------- Update a User --------------------------------------------------------
       
-   /* @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<UserType> update(@PathVariable("id") long id, @RequestBody UserType userType) {
         System.out.println("Updating User " + id);
         
-        User currentUser = userTypeService.findById(id);
+//        UserType currentUser = userTypeService.findById(id);
           
 //        if (currentUser==null) {
 //            System.out.println("User with id " + id + " not found");
@@ -94,10 +94,10 @@ public class UserTypeCtrl {
 //        currentUser.setUserPhone(user.getUserPhone());
 //        currentUser.setUserType(user.getUserType());
          
-        System.out.println(user.getUserFirstName());
-        userTypeService.saveOrUpdate(user);
-        return new ResponseEntity<User>(HttpStatus.OK);
-    }*/
+        System.out.println(userType.getUserTypeName());
+        userTypeService.saveOrUpdateType(userType);;
+        return new ResponseEntity<UserType>(HttpStatus.OK);
+    }
   
     //------------------- Delete a User --------------------------------------------------------
       
