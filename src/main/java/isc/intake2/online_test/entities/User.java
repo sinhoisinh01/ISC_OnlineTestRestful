@@ -80,7 +80,7 @@ public class User {
 	private Date userDate;
 	
 	@JsonManagedReference
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "user_type_id", nullable = false)
 	private UserType userType;
 

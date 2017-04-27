@@ -13,21 +13,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import isc.intake2.online_test.entities.Subject;
 import isc.intake2.online_test.entities.User;
 import isc.intake2.online_test.services.UserServiceImpl;
 
 @RestController
 @RequestMapping(
-	value = "api/user",
 	produces="application/json"
 )
-public class UserCtrl {
+public class UserCtrl implements IUrlCtrl{
 
 	@Autowired
 	UserServiceImpl userService;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = getUser ,method = RequestMethod.GET)
 	public ResponseEntity<List<User>> get() {
 		List<User> users = userService.findAllUsers();
 		if (users.isEmpty()) {
@@ -37,7 +35,7 @@ public class UserCtrl {
 	}
 	
 	@RequestMapping(
-		value = "/{id}",
+		value = getUserById,
 		method = RequestMethod.GET
 	)
 	public ResponseEntity<User> get(@PathVariable("id") long id) {
@@ -50,7 +48,7 @@ public class UserCtrl {
 	
 	 //-------------------Create a User--------------------------------------------------------
     
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = createUser, method = RequestMethod.POST)
     public ResponseEntity<Void> add(@RequestBody User user, UriComponentsBuilder ucBuilder) {
         System.out.println("Creating User " + user.getUserName());
   
@@ -62,14 +60,14 @@ public class UserCtrl {
         userService.saveUser(user);
   
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
+        headers.setLocation(ucBuilder.path(createUser).buildAndExpand(user.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
   
       
     //------------------- Update a User --------------------------------------------------------
       
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = updateUser, method = RequestMethod.PUT)
     public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
         System.out.println("Updating User " + id);
           
@@ -86,7 +84,7 @@ public class UserCtrl {
   
     //------------------- Delete a User --------------------------------------------------------
       
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = deleteUser, method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteUser(@PathVariable("id") long id) {
         System.out.println("Fetching & Deleting User with id " + id);
   

@@ -18,16 +18,15 @@ import isc.intake2.online_test.entities.Subject;
 import isc.intake2.online_test.services.SubjectServiceImpl;
 
 @RestController
-@RequestMapping(value = "/api",
-				produces="application/json")
-public class SubjectCtrl {
+@RequestMapping(produces="application/json")
+public class SubjectCtrl implements IUrlCtrl{
 	
 	@Autowired
 	SubjectServiceImpl subjectService;
 	
 	//-------------------Retrieve All Subjects Parent--------------------------------------------------------
 	
-	@RequestMapping(value = "/subject/", method = RequestMethod.GET)
+	@RequestMapping(value = getSubject, method = RequestMethod.GET)
 	public ResponseEntity<List<Subject>> listAllSubjectsParent(){
 		List<Subject> subjects = subjectService.findAllSubjectsParent();
 		if(subjects.isEmpty()){
@@ -37,7 +36,7 @@ public class SubjectCtrl {
 	}
 	
 	//-------------------Retrieve First Subject Child--------------------------------------------------------
-	@RequestMapping(value = "/subject/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = getSubjectById, method = RequestMethod.GET)
 	public ResponseEntity<Subject> getSubject(@PathVariable("id") long id){
 		Subject subject = subjectService.findById(id);
 		if(subject == null){
@@ -48,7 +47,7 @@ public class SubjectCtrl {
 	
 	//-------------------Create a subject--------------------------------------------------------
     
-    @RequestMapping(value = "/subject/", method = RequestMethod.POST)
+    @RequestMapping(value = createSubject, method = RequestMethod.POST)
     public ResponseEntity<Void> createSubject(@RequestBody Subject subject, UriComponentsBuilder ucBuilder){
     	if(subjectService.isSubjectExist(subject)){
     		System.out.println("A Subject with name " + subject.getSubName() + " already exist");
@@ -61,7 +60,7 @@ public class SubjectCtrl {
     }
     
   //-------------------Update a subject--------------------------------------------------------
-    @RequestMapping(value = "/subject/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = updateSubject, method = RequestMethod.POST)
     public ResponseEntity<Subject> updateSubject(@PathVariable("id") long id, @RequestBody Subject subject){
     	Subject currentSubject = subjectService.findById(id);
     	if(currentSubject == null) {
@@ -75,7 +74,7 @@ public class SubjectCtrl {
     
   //------------------- Delete a Subject --------------------------------------------------------
     
-    @RequestMapping(value = "/subject/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = deleteSubject, method = RequestMethod.DELETE)
     public ResponseEntity<Subject> deleteUser(@PathVariable("id") long id) {
  
         Subject subject = subjectService.findById(id);
