@@ -40,10 +40,6 @@ public class UserType {
 			nullable = true)
 	private String userTypeNote;
 	
-	@JsonBackReference
-	@OneToMany(mappedBy = "userType",fetch = FetchType.LAZY)
-	private Set<User> users = new HashSet<User>(0);
-	
 	public Long getId() {
 		return id;
 	}
@@ -76,12 +72,4 @@ public class UserType {
 		this.userTypeNote = userTypeNote;
 	}
 	
-	
-	public Set<User> getUsers(){
-		return this.users;
-	}
-	
-	public void setUsers(Set<User> users){
-		this.users = users;
-	}
 }

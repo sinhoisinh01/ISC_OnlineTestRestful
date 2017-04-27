@@ -79,7 +79,6 @@ public class User {
 			nullable = true)
 	private Date userDate;
 	
-	@JsonManagedReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_type_id", nullable = false)
 	private UserType userType;

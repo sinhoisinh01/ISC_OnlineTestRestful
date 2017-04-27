@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.apache.commons.codec.digest.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,15 +53,19 @@ public class UserCtrl {
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> add(@RequestBody User user, UriComponentsBuilder ucBuilder) {
+    	System.out.println("yoyo");
         System.out.println("Creating User " + user.getUserName());
   
         /*if (userService.isUserExist(user)) {
             System.out.println("A User with name " + user.getName() + " already exist");
             return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }*/
-  
+        //DigestUtils.
+        //user.setUserEncPassword(DigestUtils.sha1Hex(user.getUserEncPassword()));
+//        System.out.println(user.getUserType().getId());
+        
         userService.saveUser(user);
-  
+        
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
@@ -79,9 +84,22 @@ public class UserCtrl {
             System.out.println("User with id " + id + " not found");
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
-          
-        userService.saveOrUpdate(user);
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        
+        currentUser.setUserDate(user.getUserDate());
+        currentUser.setUserDOB(user.getUserDOB());
+        currentUser.setUserEmail(user.getUserEmail());
+        currentUser.setUserEncPassword(user.getUserEncPassword());
+        currentUser.setUserFirstName(user.getUserFirstName());
+        currentUser.setUserGender(user.getUserGender());
+        currentUser.setUserIsActive(user.getUserIsActive());
+        currentUser.setUserLastName(user.getUserLastName());
+        currentUser.setUserName(user.getUserName());
+        currentUser.setUserPhone(user.getUserPhone());
+        currentUser.setUserType(user.getUserType());
+         
+        System.out.println(currentUser.getUserFirstName());
+        userService.saveOrUpdate(currentUser);
+        return new ResponseEntity<User>(HttpStatus.OK);
     }
   
     //------------------- Delete a User --------------------------------------------------------
