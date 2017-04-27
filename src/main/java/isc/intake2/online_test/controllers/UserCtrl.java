@@ -77,28 +77,28 @@ public class UserCtrl {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
         System.out.println("Updating User " + id);
-          
+        
         User currentUser = userService.findById(id);
           
-        if (currentUser==null) {
-            System.out.println("User with id " + id + " not found");
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-        }
+//        if (currentUser==null) {
+//            System.out.println("User with id " + id + " not found");
+//            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+//        }
         
-        currentUser.setUserDate(user.getUserDate());
-        currentUser.setUserDOB(user.getUserDOB());
-        currentUser.setUserEmail(user.getUserEmail());
-        currentUser.setUserEncPassword(user.getUserEncPassword());
-        currentUser.setUserFirstName(user.getUserFirstName());
-        currentUser.setUserGender(user.getUserGender());
-        currentUser.setUserIsActive(user.getUserIsActive());
-        currentUser.setUserLastName(user.getUserLastName());
-        currentUser.setUserName(user.getUserName());
-        currentUser.setUserPhone(user.getUserPhone());
-        currentUser.setUserType(user.getUserType());
+//        currentUser.setUserDate(user.getUserDate());
+//        currentUser.setUserDOB(user.getUserDOB());
+//        currentUser.setUserEmail(user.getUserEmail());
+//        currentUser.setUserEncPassword(user.getUserEncPassword());
+//        currentUser.setUserFirstName(user.getUserFirstName());
+//        currentUser.setUserGender(user.getUserGender());
+//        currentUser.setUserIsActive(user.getUserIsActive());
+//        currentUser.setUserLastName(user.getUserLastName());
+//        currentUser.setUserName(user.getUserName());
+//        currentUser.setUserPhone(user.getUserPhone());
+//        currentUser.setUserType(user.getUserType());
          
-        System.out.println(currentUser.getUserFirstName());
-        userService.saveOrUpdate(currentUser);
+        System.out.println(user.getUserFirstName());
+        userService.saveOrUpdate(user);
         return new ResponseEntity<User>(HttpStatus.OK);
     }
   
