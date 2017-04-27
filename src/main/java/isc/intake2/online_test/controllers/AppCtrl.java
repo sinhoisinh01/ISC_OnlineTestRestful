@@ -15,9 +15,6 @@ import isc.intake2.online_test.entities.User;
 import isc.intake2.online_test.services.UserServiceImpl;
  
 
-@RestController
-@RequestMapping(value = "/api",
-				produces="application/json")
 public class AppCtrl {
     @Autowired
     UserServiceImpl userService;
