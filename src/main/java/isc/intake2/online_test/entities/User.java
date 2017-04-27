@@ -12,13 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -78,9 +72,8 @@ public class User {
 	@Column(name = "date",
 			nullable = true)
 	private Date userDate;
-	
-	@JsonManagedReference
-	@ManyToOne
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_type_id", nullable = false)
 	private UserType userType;
 
