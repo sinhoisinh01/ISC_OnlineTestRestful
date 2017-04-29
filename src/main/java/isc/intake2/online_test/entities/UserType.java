@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "user_types")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class UserType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

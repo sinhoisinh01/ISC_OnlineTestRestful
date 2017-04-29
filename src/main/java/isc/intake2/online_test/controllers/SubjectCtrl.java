@@ -1,6 +1,7 @@
 //Hong
 package isc.intake2.online_test.controllers;
 
+import java.nio.charset.Charset;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import isc.intake2.online_test.entities.Subject;
 import isc.intake2.online_test.services.SubjectServiceImpl;
 
 @RestController
-@RequestMapping(produces="application/json")
+@RequestMapping(produces={"application/json; charset=UTF-8"})
 public class SubjectCtrl implements IUrlCtrl{
 	
 	@Autowired
@@ -53,6 +54,7 @@ public class SubjectCtrl implements IUrlCtrl{
     		System.out.println("A Subject with name " + subject.getSubName() + " already exist");
     		return new ResponseEntity<Void>(HttpStatus.CONFLICT);
     	}
+    	System.out.println(Charset.forName("UTF-8").encode(subject.getSubName()));
     	subjectService.saveSubject(subject);
     	HttpHeaders headers = new HttpHeaders();
     	headers.setLocation(ucBuilder.path("/subject/{id}").buildAndExpand(subject.getId()).toUri());
@@ -60,13 +62,13 @@ public class SubjectCtrl implements IUrlCtrl{
     }
     
   //-------------------Update a subject--------------------------------------------------------
-    @RequestMapping(value = updateSubject, method = RequestMethod.POST)
+    @RequestMapping(value = updateSubject, method = RequestMethod.PUT)
     public ResponseEntity<Subject> updateSubject(@PathVariable("id") long id, @RequestBody Subject subject){
     	Subject currentSubject = subjectService.findById(id);
     	if(currentSubject == null) {
     		return new ResponseEntity<Subject>(HttpStatus.NOT_FOUND);
     	}
-    	currentSubject.setSubId(subject.getSubId());
+    	
     	currentSubject.setSubName(subject.getSubName());
     	subjectService.saveOrUpdateSubject(currentSubject);
     	return new ResponseEntity<Subject>(HttpStatus.OK);

@@ -18,7 +18,6 @@ import javax.persistence.GenerationType;
 
 @Entity
 @Table(name="users")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,7 +58,6 @@ public class User {
 			nullable = true,
 			length = 50)
 	private String userEmail;
-	
 	@Column(name = "phone",
 			nullable = true,
 			length = 50)

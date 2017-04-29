@@ -19,7 +19,7 @@ import isc.intake2.online_test.services.UserTypeServiceImpl;
 @RestController
 @RequestMapping(
 	value = "api/usertype",
-	produces="application/json"
+	produces={"application/json; charset=UTF-8"}
 )
 public class UserTypeCtrl {
 	@Autowired

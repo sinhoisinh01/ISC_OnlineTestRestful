@@ -41,4 +41,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 		authorities.add(new SimpleGrantedAuthority("ROLE_" + userType.getUserTypeName()));
 		return authorities;
 	}
+	
+	public User getUserInfo(String username){
+		User user = userService.findByName(username);
+		if(user == null){
+			throw new UsernameNotFoundException("Username not found!");
+		}
+		return user;
+	}
 }

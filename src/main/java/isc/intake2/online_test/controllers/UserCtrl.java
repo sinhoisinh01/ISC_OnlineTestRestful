@@ -19,7 +19,7 @@ import isc.intake2.online_test.services.UserServiceImpl;
 
 @RestController
 @RequestMapping(
-	produces="application/json"
+	produces={"application/json; charset=UTF-8"}
 )
 public class UserCtrl implements IUrlCtrl{
 
