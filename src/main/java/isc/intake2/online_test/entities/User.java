@@ -71,7 +71,7 @@ public class User {
 			nullable = true)
 	private Date userDate;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_type_id", nullable = false)
 	private UserType userType;
 
