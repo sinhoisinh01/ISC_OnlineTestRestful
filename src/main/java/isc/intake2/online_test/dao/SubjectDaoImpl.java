@@ -8,12 +8,19 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import isc.intake2.online_test.entities.Subject;
+import isc.intake2.online_test.entities.User;
 
 @Repository("subjectDao")
 public class SubjectDaoImpl extends AbstractDaoImpl<Long, Subject> implements ISubjectDao {
 	 
 	public Subject findById(long id){
 		return getByKey(id);
+	}
+
+	public Subject findByName(String name){
+		Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("subName", name));
+        return (Subject) criteria.uniqueResult();
 	}
 	
 	public void saveSubject(Subject subject){
@@ -37,7 +44,7 @@ public class SubjectDaoImpl extends AbstractDaoImpl<Long, Subject> implements IS
 
 	@Override
 	public boolean isSubjectExist(Subject subject) {
-		return findById(subject.getId()) != null;
+		return findByName(subject.getSubName()) != null;
 	}
 	
 }

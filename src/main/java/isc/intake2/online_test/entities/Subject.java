@@ -1,7 +1,6 @@
 //Hong
 package isc.intake2.online_test.entities;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -17,9 +16,6 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.deser.std.StringDeserializer;
-import com.fasterxml.jackson.databind.ser.std.StringSerializer;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,17 +28,27 @@ public class Subject {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Size(max = 20)
+	@Column(name = "sub_id",
+			nullable = true,
+			length = 20)
+	private String subId;
+	
 	@Size(min = 3, max = 100)
-	@Column(name="sub_name",
-			length = 100,
-			nullable = true)
+	@Column(name = "name",
+			nullable = false,
+			length = 100)
 	private String subName;
 	
 	/*--------------------Recursive relation mapping----------------*/
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="sub_id", insertable = false, updatable = false)
+	@JsonBackReference
+	@JoinColumn(name = "sub_id", insertable = false, updatable = false)
 	private Subject parentSub;
 	
+	@OneToMany(mappedBy="parentSub", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonManagedReference
+	private Collection<Subject> childSubs;
 	
 	/*End------------------Recursive relation mapping----------------*/
 	
@@ -54,15 +60,20 @@ public class Subject {
 		this.id = id;
 	}
 
+	public String getSubId() {
+		return subId;
+	}
+
+	public void setSubId(String subId) {
+		this.subId = subId;
+	}
 
 	public String getSubName() {
 		return subName;
 	}
 
 	public void setSubName(String subName) {
-
 		this.subName = subName;
-		
 	}
 
 	public Subject getParentSub() {
@@ -73,6 +84,13 @@ public class Subject {
 		this.parentSub = parentSub;
 	}
 
+	public Collection<Subject> getChildSubs() {
+		return childSubs;
+	}
+
+	public void setChildSubs(Collection<Subject> childSubs) {
+		this.childSubs = childSubs;
+	}
 
 	/*-------------------Contructor---------------*/
 	public Subject() {
@@ -82,14 +100,17 @@ public class Subject {
 	public Subject(long id, String subId, String subName) {
 		super();
 		this.id = id;
+		this.subId = subId;
 		this.subName = subName;
 	}
 
 	public Subject(long id, String subId, String subName, Subject parentSub, Collection<Subject> childSubs) {
 		super();
 		this.id = id;
+		this.subId = subId;
 		this.subName = subName;
 		this.parentSub = parentSub;
+		this.childSubs = childSubs;
 	}
 
 	@Override
@@ -97,6 +118,7 @@ public class Subject {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((subId == null) ? 0 : subId.hashCode());
 		result = prime * result + ((subName == null) ? 0 : subName.hashCode());
 		return result;
 	}
@@ -112,6 +134,11 @@ public class Subject {
 		Subject other = (Subject) obj;
 		if (id != other.id)
 			return false;
+		if (subId == null) {
+			if (other.subId != null)
+				return false;
+		} else if (!subId.equals(other.subId))
+			return false;
 		if (subName == null) {
 			if (other.subName != null)
 				return false;
@@ -122,7 +149,7 @@ public class Subject {
 
 	@Override
 	public String toString() {
-		return "Subject [id=" + id + ", subName=" + subName + "]";
+		return "Subject [id=" + id + ", subId=" + subId + ", subName=" + subName + "]";
 	}
 
 }

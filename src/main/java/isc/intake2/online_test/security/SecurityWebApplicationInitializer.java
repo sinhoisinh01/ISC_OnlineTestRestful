@@ -14,7 +14,6 @@ public class SecurityWebApplicationInitializer extends AbstractSecurityWebApplic
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding(StandardCharsets.UTF_8.name());
         characterEncodingFilter.setForceEncoding(true);
-
         insertFilters(servletContext, characterEncodingFilter, new CORSFilter());
     }
 	
