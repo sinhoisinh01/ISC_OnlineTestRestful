@@ -26,11 +26,11 @@ public class UserDaoImpl extends AbstractDaoImpl<Long, User> implements IUserDao
 	}
 	
 	public void saveOrUpdate(User user){
-		saveOrUpdate(user);
+		super.saveOrUpdate(user);
 	}
 	
 	public void deleteUser(User user){
-		delete(user);
+		super.delete(user);
 	}
 	
 	
