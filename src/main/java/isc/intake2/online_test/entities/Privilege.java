@@ -38,7 +38,7 @@ public class Privilege {
 			nullable = false)
 	private Integer priParent;
 	
-	@Column(name = "order")
+	@Column(name = "[order]")
 	private Integer priOrder;
 	
 	@Size(min = 0, max = 400)
