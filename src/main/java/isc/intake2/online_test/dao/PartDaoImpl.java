@@ -4,6 +4,7 @@ package isc.intake2.online_test.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import isc.intake2.online_test.entities.Part;
@@ -32,8 +33,13 @@ public class PartDaoImpl extends AbstractDaoImpl<Long, Part> implements IPartDao
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Part> findAllParts(){
+	public List<Part> findAllParts(long subjectId){
 		Criteria criteria = createEntityCriteria();
+		criteria.add(Restrictions.sqlRestriction("{alias}.subject_id = " + subjectId));
 		return (List<Part>) criteria.list();
+	}
+	
+	public Boolean isPartExist(Part part){
+		return findByName(part.getParName()) != null;
 	}
 }
