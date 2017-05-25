@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import isc.intake2.online_test.entities.Option;
 import isc.intake2.online_test.entities.Question;
 import isc.intake2.online_test.services.QuestionServiceImpl;
 
@@ -62,6 +63,11 @@ public class QuestionCtrl implements IUrlCtrl  {
         
         Question currentQuestion = questionService.findById(id);
      
+        if (currentQuestion==null) {
+            return new ResponseEntity<Question>(HttpStatus.NOT_FOUND);
+  		}
+  		    
+        
         questionService.saveOrUpdateQuestion(question);
         return new ResponseEntity<Question>(HttpStatus.OK);
     }
