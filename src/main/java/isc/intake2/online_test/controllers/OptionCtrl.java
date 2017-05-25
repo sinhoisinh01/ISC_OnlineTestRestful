@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import isc.intake2.online_test.entities.Option;
+import isc.intake2.online_test.entities.User;
 import isc.intake2.online_test.services.OptionServiceImpl;
 
 @RestController
@@ -59,8 +60,13 @@ public class OptionCtrl implements IUrlCtrl  {
 	
 	@RequestMapping(value = updateOption, method = RequestMethod.PUT)
     public ResponseEntity<Option> updateOption(@PathVariable("id") long id, @RequestBody Option option) {
-
-     
+		
+		Option currentOption = optionService.findById(id);
+		
+		if (currentOption==null) {
+          return new ResponseEntity<Option>(HttpStatus.NOT_FOUND);
+		}
+		     
         optionService.saveOrUpdateOption(option);
         return new ResponseEntity<Option>(HttpStatus.OK);
     }
