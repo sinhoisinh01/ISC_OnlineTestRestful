@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import isc.intake2.online_test.dao.IPartDao;
+import isc.intake2.online_test.dao.PartDaoImpl;
 import isc.intake2.online_test.entities.Part;
 
 @Service("partService")

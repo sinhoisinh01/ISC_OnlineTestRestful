@@ -25,8 +25,8 @@ public class PartCtrl implements IUrlCtrl{
 	//-------------------Retrieve All Parts--------------------------------------------------------
 	
 	@RequestMapping(value = getPart, method = RequestMethod.GET)
-	public ResponseEntity<List<Part>> getPart(@PathVariable("subjectId") long id){
-		List<Part> parts = partService.findAllPart(id);
+	public ResponseEntity<List<Part>> getPart(@PathVariable("subjectId") long subjectId){
+		List<Part> parts = partService.findAllPart(subjectId);
 		if(parts.isEmpty()){
 			return new ResponseEntity<List<Part>>(HttpStatus.NO_CONTENT);
 		}
