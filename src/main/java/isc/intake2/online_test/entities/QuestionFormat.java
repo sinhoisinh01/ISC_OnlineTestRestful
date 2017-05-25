@@ -22,7 +22,7 @@ public class QuestionFormat {
 
 	@Column(name = "[order]",
 			nullable = true)
-	private Boolean quefOrder;
+	private byte quefOrder;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "part_id", nullable = false)
@@ -48,11 +48,11 @@ public class QuestionFormat {
 		this.id = id;
 	}
 
-	public Boolean getQuefOrder() {
+	public byte getQuefOrder() {
 		return quefOrder;
 	}
 
-	public void setQuefOrder(Boolean quefOrder) {
+	public void setQuefOrder(byte quefOrder) {
 		this.quefOrder = quefOrder;
 	}
 
@@ -68,7 +68,7 @@ public class QuestionFormat {
 		super();
 	}
 
-	public QuestionFormat(long id, Boolean quefOrder, Part part, AnswerType answerType) {
+	public QuestionFormat(long id, byte quefOrder, Part part, AnswerType answerType) {
 		super();
 		this.id = id;
 		this.quefOrder = quefOrder;
