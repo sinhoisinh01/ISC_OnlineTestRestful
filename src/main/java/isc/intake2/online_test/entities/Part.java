@@ -97,27 +97,27 @@ public class Part {
 		this.parDirection = parDirection;
 	}
 
-	public int getParDefault_score() {
+	public float getParDefault_score() {
 		return parDefault_score;
 	}
 
-	public void setParDefault_score(int parDefault_score) {
+	public void setParDefault_score(float parDefault_score) {
 		this.parDefault_score = parDefault_score;
 	}
 
-	public Boolean getParDefault_column() {
+	public byte getParDefault_column() {
 		return parDefault_column;
 	}
 
-	public void setParDefault_column(Boolean parDefault_column) {
+	public void setParDefault_column(byte parDefault_column) {
 		this.parDefault_column = parDefault_column;
 	}
 
-	public Boolean getParDefault_level() {
+	public byte getParDefault_level() {
 		return parDefault_level;
 	}
 
-	public void setParDefault_level(Boolean parDefault_level) {
+	public void setParDefault_level(byte parDefault_level) {
 		this.parDefault_level = parDefault_level;
 	}
 
@@ -150,8 +150,8 @@ public class Part {
 		super();
 	}
 
-	public Part(long id, String parId, String parName, String parDirection, int parDefault_score,
-			Boolean parDefault_column, Boolean parDefault_level, int parOrder, String parNote, Subject subject) {
+	public Part(long id, String parId, String parName, String parDirection, float parDefault_score,
+			byte parDefault_column, byte parDefault_level, int parOrder, String parNote, Subject subject) {
 		super();
 		this.id = id;
 		this.parId = parId;
