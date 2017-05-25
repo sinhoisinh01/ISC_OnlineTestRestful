@@ -30,7 +30,6 @@ public class PartCtrl implements IUrlCtrl{
 		if(parts.isEmpty()){
 			return new ResponseEntity<List<Part>>(HttpStatus.NO_CONTENT);
 		}
-		else
 			return new ResponseEntity<List<Part>>(parts, HttpStatus.OK);
 	}
 	
@@ -41,7 +40,6 @@ public class PartCtrl implements IUrlCtrl{
 		if(part == null){
 			return new ResponseEntity<Part>(HttpStatus.NO_CONTENT);
 		}
-		else
 			return new ResponseEntity<Part>(part, HttpStatus.OK);
 	}
 	

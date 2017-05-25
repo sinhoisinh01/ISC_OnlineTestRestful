@@ -35,7 +35,7 @@ public class PartDaoImpl extends AbstractDaoImpl<Long, Part> implements IPartDao
 	@SuppressWarnings("unchecked")
 	public List<Part> findAllParts(long subjectId){
 		Criteria criteria = createEntityCriteria();
-		criteria.add(Restrictions.sqlRestriction("{alias}.subject_id = " + subjectId));
+		criteria.add(Restrictions.eq("subject_id", subjectId));
 		return (List<Part>) criteria.list();
 	}
 	
