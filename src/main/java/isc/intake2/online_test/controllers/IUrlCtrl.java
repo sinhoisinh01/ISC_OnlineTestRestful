@@ -61,7 +61,7 @@ public interface IUrlCtrl {
 	
 	
 	//part
-	public static final String getPart = "/api/subject/part/{subjectId}";
+	public static final String getPart = "/api/parts/{subjectId}";
 	
 	public static final String getPartById = "/api/part/{id}";
 	
@@ -70,6 +70,5 @@ public interface IUrlCtrl {
 	public static final String updatePart = "/api/part/{id}";
 
 	public static final String deletePart = "/api/part/{id}";
-
 
 }
