@@ -69,14 +69,8 @@ public class PartCtrl implements IUrlCtrl{
 		}
 		else
 		{
-			currentPart.setParName(part.getParName());
-			currentPart.setParDirection(part.getParDirection());
-			currentPart.setParDefault_column(part.getParDefault_column());
-			currentPart.setParDefault_level(part.getParDefault_level());
-			currentPart.setParDefault_score(part.getParDefault_score());
-			currentPart.setParNote(part.getParNote());
-			currentPart.setParOrder(part.getParOrder());
-			return new ResponseEntity<Void>(HttpStatus.CREATED);
+			partService.saveOrUpdate(part);
+			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 	}
 	

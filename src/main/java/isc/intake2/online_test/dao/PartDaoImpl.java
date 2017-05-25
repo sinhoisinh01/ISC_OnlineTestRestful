@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import isc.intake2.online_test.entities.Part;
+import isc.intake2.online_test.entities.Subject;
 
 @Repository("partDao")
 public class PartDaoImpl extends AbstractDaoImpl<Long, Part> implements IPartDao{
@@ -17,7 +18,9 @@ public class PartDaoImpl extends AbstractDaoImpl<Long, Part> implements IPartDao
 	}
 	
 	public Part findByName(String name){
-		return findByName(name);
+		Criteria criteria = createEntityCriteria();
+		criteria.add(Restrictions.eq("parName", name));
+        return (Part) criteria.uniqueResult();
 	}
 	
 	public void savePart(Part part){
@@ -35,7 +38,7 @@ public class PartDaoImpl extends AbstractDaoImpl<Long, Part> implements IPartDao
 	@SuppressWarnings("unchecked")
 	public List<Part> findAllParts(long subjectId){
 		Criteria criteria = createEntityCriteria();
-		criteria.add(Restrictions.eq("subject_id", subjectId));
+		criteria.add(Restrictions.sqlRestriction("{alias}.subject_id = " + subjectId));
 		return (List<Part>) criteria.list();
 	}
 	
