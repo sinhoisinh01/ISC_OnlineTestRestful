@@ -1,4 +1,4 @@
-//Hong
+ 	//Hong
 package isc.intake2.online_test.entities;
 
 import java.util.Date;
@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 

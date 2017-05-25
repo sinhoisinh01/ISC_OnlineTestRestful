@@ -25,4 +25,16 @@ public interface IUrlCtrl {
 	public final String updateSubject = "/api/subject/{id}";
 	
 	public final String deleteSubject = "/api/subject/{id}";
+	
+	//part
+	public static final String getPart = "/api/subject/part/{subjectId}";
+	
+	public static final String getPartById = "/api/part/{id}";
+	
+	public static final String createPart = "/api/part";
+	
+	public static final String updatePart = "/api/part/{id}";
+	
+	public static final String deletePart = "/api/part/{id}";
+
 }

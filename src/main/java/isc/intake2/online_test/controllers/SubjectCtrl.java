@@ -75,7 +75,7 @@ public class SubjectCtrl implements IUrlCtrl{
     	
     	currentSubject.setSubName(subject.getSubName());
     	subjectService.saveOrUpdateSubject(currentSubject);
-    	return new ResponseEntity<Subject>(HttpStatus.OK);
+    	return new ResponseEntity<Subject>(HttpStatus.CREATED);
     }
     
   //------------------- Delete a Subject --------------------------------------------------------
