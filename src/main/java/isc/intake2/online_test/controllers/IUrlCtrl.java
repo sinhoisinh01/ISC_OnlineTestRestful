@@ -4,25 +4,25 @@ public interface IUrlCtrl {
 	
 	//url user
 	
-	public String getUser = "/api/user";
+	public final String getUser = "/api/user";
 	
-	public String getUserById = "/api/user/{id}";
+	public final String getUserById = "/api/user/{id}";
 	
-	public String createUser = "/api/user";
+	public final String createUser = "/api/user";
 	
-	public String updateUser = "/api/user/{id}";
+	public final String updateUser = "/api/user/{id}";
 	
-	public String deleteUser = "/api/user/{id}";
+	public final String deleteUser = "/api/user/{id}";
 	
 	//subject
 	
-	public String getSubject = "/api/subject";
+	public final String getSubject = "/api/subject";
 	
-	public String getSubjectById = "/api/subject/{id}";
+	public final String getSubjectById = "/api/subject/{id}";
 	
-	public String createSubject = "/api/subject";
+	public final String createSubject = "/api/subject";
 	
-	public String updateSubject = "/api/subject/{id}";
+	public final String updateSubject = "/api/subject/{id}";
 	
-	public String deleteSubject = "/api/subject/{id}";
+	public final String deleteSubject = "/api/subject/{id}";
 }
