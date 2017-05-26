@@ -48,15 +48,15 @@ public class Part {
 	private String parDirection;
 	
 	@Column(name = "default_score")
-	private int parDefault_score;
+	private float parDefault_score;
 	
 	@Column(name = "default_column",
 			nullable = true)
-	private Boolean parDefault_column;
+	private byte parDefault_column;
 	
 	@Column(name = "default_level",
 			nullable = true)
-	private Boolean parDefault_level;
+	private byte parDefault_level;
 	
 	@Column(name = "[order]")
 	private int parOrder;
@@ -107,27 +107,27 @@ public class Part {
 		this.parDirection = parDirection;
 	}
 
-	public int getParDefault_score() {
+	public float getParDefault_score() {
 		return parDefault_score;
 	}
 
-	public void setParDefault_score(int parDefault_score) {
+	public void setParDefault_score(float parDefault_score) {
 		this.parDefault_score = parDefault_score;
 	}
 
-	public Boolean getParDefault_column() {
+	public byte getParDefault_column() {
 		return parDefault_column;
 	}
 
-	public void setParDefault_column(Boolean parDefault_column) {
+	public void setParDefault_column(byte parDefault_column) {
 		this.parDefault_column = parDefault_column;
 	}
 
-	public Boolean getParDefault_level() {
+	public byte getParDefault_level() {
 		return parDefault_level;
 	}
 
-	public void setParDefault_level(Boolean parDefault_level) {
+	public void setParDefault_level(byte parDefault_level) {
 		this.parDefault_level = parDefault_level;
 	}
 
@@ -146,8 +146,7 @@ public class Part {
 	public void setParNote(String parNote) {
 		this.parNote = parNote;
 	}
-	
-	
+
 	public Collection<ImageGallery> getImageGallery() {
 		return imageGallery;
 	}
@@ -163,13 +162,13 @@ public class Part {
 	public void setSubject(Subject subject) {
 		this.subject = subject;
 	}
-	
+
 	public Part() {
 		super();
 	}
 
-	public Part(long id, String parId, String parName, String parDirection, int parDefault_score,
-			Boolean parDefault_column, Boolean parDefault_level, int parOrder, String parNote, Subject subject) {
+	public Part(long id, String parId, String parName, String parDirection, float parDefault_score,
+			byte parDefault_column, byte parDefault_level, int parOrder, String parNote, Subject subject) {
 		super();
 		this.id = id;
 		this.parId = parId;
@@ -182,5 +181,80 @@ public class Part {
 		this.parNote = parNote;
 		this.subject = subject;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + parDefault_column;
+		result = prime * result + parDefault_level;
+		result = prime * result + Float.floatToIntBits(parDefault_score);
+		result = prime * result + ((parDirection == null) ? 0 : parDirection.hashCode());
+		result = prime * result + ((parId == null) ? 0 : parId.hashCode());
+		result = prime * result + ((parName == null) ? 0 : parName.hashCode());
+		result = prime * result + ((parNote == null) ? 0 : parNote.hashCode());
+		result = prime * result + parOrder;
+		result = prime * result + ((subject == null) ? 0 : subject.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Part other = (Part) obj;
+		if (id != other.id)
+			return false;
+		if (parDefault_column != other.parDefault_column)
+			return false;
+		if (parDefault_level != other.parDefault_level)
+			return false;
+		if (Float.floatToIntBits(parDefault_score) != Float.floatToIntBits(other.parDefault_score))
+			return false;
+		if (parDirection == null) {
+			if (other.parDirection != null)
+				return false;
+		} else if (!parDirection.equals(other.parDirection))
+			return false;
+		if (parId == null) {
+			if (other.parId != null)
+				return false;
+		} else if (!parId.equals(other.parId))
+			return false;
+		if (parName == null) {
+			if (other.parName != null)
+				return false;
+		} else if (!parName.equals(other.parName))
+			return false;
+		if (parNote == null) {
+			if (other.parNote != null)
+				return false;
+		} else if (!parNote.equals(other.parNote))
+			return false;
+		if (parOrder != other.parOrder)
+			return false;
+		if (subject == null) {
+			if (other.subject != null)
+				return false;
+		} else if (!subject.equals(other.subject))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Part [id=" + id + ", parId=" + parId + ", parName=" + parName + ", parDirection=" + parDirection
+				+ ", parDefault_score=" + parDefault_score + ", parDefault_column=" + parDefault_column
+				+ ", parDefault_level=" + parDefault_level + ", parOrder=" + parOrder + ", parNote=" + parNote
+				+ ", subject=" + subject + "]";
+	}
+
+		
 }
+
+	

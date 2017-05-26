@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import isc.intake2.online_test.entities.Part;
+import isc.intake2.online_test.entities.Subject;
 
 @Repository("partDao")
 public class PartDaoImpl extends AbstractDaoImpl<Long, Part> implements IPartDao{
@@ -17,7 +18,9 @@ public class PartDaoImpl extends AbstractDaoImpl<Long, Part> implements IPartDao
 	}
 	
 	public Part findByName(String name){
-		return findByName(name);
+		Criteria criteria = createEntityCriteria();
+		criteria.add(Restrictions.eq("parName", name));
+        return (Part) criteria.uniqueResult();
 	}
 	
 	public void savePart(Part part){
