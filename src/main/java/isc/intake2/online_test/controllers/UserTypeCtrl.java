@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import isc.intake2.online_test.entities.UserType;
-import isc.intake2.online_test.services.UserTypeServiceImpl;
+import isc.intake2.online_test.services.IUserTypeService;
 
 @RestController
 @RequestMapping(
@@ -23,7 +23,7 @@ import isc.intake2.online_test.services.UserTypeServiceImpl;
 )
 public class UserTypeCtrl {
 	@Autowired
-	UserTypeServiceImpl userTypeService;
+	IUserTypeService userTypeService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<UserType>> get() {

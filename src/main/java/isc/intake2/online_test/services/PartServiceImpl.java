@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import isc.intake2.online_test.dao.IPartDao;
@@ -13,6 +14,7 @@ import isc.intake2.online_test.entities.Part;
 @Transactional
 public class PartServiceImpl implements IPartService{
 
+	@Autowired
 	private IPartDao partDao;
 	
 	@Override

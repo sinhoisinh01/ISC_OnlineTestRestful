@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import isc.intake2.online_test.entities.Part;
-import isc.intake2.online_test.services.PartServiceImpl;
+import isc.intake2.online_test.services.IPartService;
 
 @RestController
 @RequestMapping(produces="application/json")
 public class PartCtrl implements IUrlCtrl{
 
 	@Autowired
-	private PartServiceImpl partService;
+	private IPartService partService;
 	
 	//-------------------Retrieve All Parts--------------------------------------------------------
 	

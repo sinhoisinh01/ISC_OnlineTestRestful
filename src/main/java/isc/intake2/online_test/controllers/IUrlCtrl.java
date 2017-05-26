@@ -35,5 +35,16 @@ public interface IUrlCtrl {
 	
 	public static final String updatePart = "/api/part/{id}";
 	
-	public static final String deletePart = "/api/subject/{id}";
+	public static final String deletePart = "/api/part/{id}";
+	
+	//image gallery
+	public static final String getImage = "/api/part/{partId}/image";
+	
+	public static final String getImageById = "/api/part/{partId}/image/{id}";
+	
+	public static final String createImage = "/api/part/{partId}/image";
+	
+	public static final String updateImage = "/api/part/{partId}/image/{id}";
+	
+	public static final String deleteImage = "/api/image/{id}";
 }
