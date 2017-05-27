@@ -62,7 +62,7 @@ public class Part {
 	private String parNote;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "subject_id", nullable = false)
+	@JoinColumn(name = "subject_id", nullable = false, updatable = false)
 	private Subject subject;
 
 	public long getId() {
