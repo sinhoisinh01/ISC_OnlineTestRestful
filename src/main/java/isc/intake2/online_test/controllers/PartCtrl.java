@@ -17,13 +17,14 @@ import isc.intake2.online_test.entities.Part;
 import isc.intake2.online_test.entities.Subject;
 import isc.intake2.online_test.services.PartServiceImpl;
 import isc.intake2.online_test.services.SubjectServiceImpl;
+import isc.intake2.online_test.services.IPartService;
 
 @RestController
 @RequestMapping(produces="application/json")
 public class PartCtrl implements IUrlCtrl{
 
 	@Autowired
-	private PartServiceImpl partService;
+	private IPartService partService;
 	
 	@Autowired
 	private SubjectServiceImpl subjectService;

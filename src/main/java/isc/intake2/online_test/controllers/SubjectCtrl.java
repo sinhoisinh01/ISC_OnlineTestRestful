@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import isc.intake2.online_test.entities.Subject;
-import isc.intake2.online_test.services.SubjectServiceImpl;
+import isc.intake2.online_test.services.ISubjectService;
 
 @RestController
 @RequestMapping(produces="application/json")
 public class SubjectCtrl implements IUrlCtrl{
 	
 	@Autowired
-	SubjectServiceImpl subjectService;
+	ISubjectService subjectService;
 	
 	//-------------------Retrieve All Subjects Parent--------------------------------------------------------
 	

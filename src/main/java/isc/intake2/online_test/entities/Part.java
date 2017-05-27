@@ -1,14 +1,20 @@
 //Nguyên Ngô
 package isc.intake2.online_test.entities;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -65,6 +71,10 @@ public class Part {
 	@JoinColumn(name = "subject_id", nullable = false, updatable = false)
 	private Subject subject;
 
+	@OneToMany(mappedBy="part", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonManagedReference
+	private Collection<ImageGallery> imageGallery;
+	
 	public long getId() {
 		return id;
 	}
@@ -135,6 +145,14 @@ public class Part {
 
 	public void setParNote(String parNote) {
 		this.parNote = parNote;
+	}
+
+	public Collection<ImageGallery> getImageGallery() {
+		return imageGallery;
+	}
+
+	public void setImageGallery(Collection<ImageGallery> imageGallery) {
+		this.imageGallery = imageGallery;
 	}
 
 	public Subject getSubject() {
