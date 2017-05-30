@@ -3,6 +3,7 @@ package isc.intake2.online_test.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import isc.intake2.online_test.entities.Part;
+import isc.intake2.online_test.entities.Subject;
+import isc.intake2.online_test.services.PartServiceImpl;
+import isc.intake2.online_test.services.SubjectServiceImpl;
 import isc.intake2.online_test.services.IPartService;
 
 @RestController
@@ -21,6 +25,9 @@ public class PartCtrl implements IUrlCtrl{
 
 	@Autowired
 	private IPartService partService;
+	
+	@Autowired
+	private SubjectServiceImpl subjectService;
 	
 	//-------------------Retrieve All Parts--------------------------------------------------------
 	
@@ -46,6 +53,7 @@ public class PartCtrl implements IUrlCtrl{
 	//-------------------Create a Part--------------------------------------------------------
 	@RequestMapping(value = createPart, method = RequestMethod.POST)
 	public ResponseEntity<Void> createPart(@RequestBody Part part,
+											@PathVariable("subjectId") long subjectId,
 											UriComponentsBuilder ucBuilder){
 		if(partService.isPartExist(part)){
     		System.out.println("A Subject with name " + part.getParName() + " already exist");
@@ -53,14 +61,28 @@ public class PartCtrl implements IUrlCtrl{
     	}
 		else
 		{
-			partService.savePart(part);
-			return new ResponseEntity<Void>(HttpStatus.CREATED);
+			Subject subject = subjectService.findById(subjectId);
+			Part newPart = new Part();
+			newPart.setParId(part.getParId());
+			newPart.setParName(part.getParName());
+			newPart.setParDirection(part.getParDirection());
+			newPart.setParDefault_level(part.getParDefault_level());
+			newPart.setParDefault_score(part.getParDefault_score());
+			newPart.setParDefault_column(part.getParDefault_column());
+			newPart.setParOrder(part.getParOrder());
+			newPart.setParNote(part.getParNote());
+			newPart.setSubject(subject);
+			partService.savePart(newPart);
+			HttpHeaders headers = new HttpHeaders();
+	        headers.setLocation(ucBuilder.path(createPart).buildAndExpand(part.getId()).toUri());
+			return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 		}
 	}
 	
 	//-------------------Update a Part--------------------------------------------------------
 	@RequestMapping(value = updatePart, method = RequestMethod.PUT)
-	public ResponseEntity<Void> updatePart(@PathVariable("id") long id,
+	public ResponseEntity<Void> updatePart(@PathVariable("subjectId") long subjectId,
+											@PathVariable("id") long id,
 											@RequestBody Part part,
 											UriComponentsBuilder ucBuilder) {
 		Part currentPart =  partService.findById(id);
@@ -69,6 +91,8 @@ public class PartCtrl implements IUrlCtrl{
 		}
 		else
 		{
+			Subject subject = subjectService.findById(subjectId);
+			part.setSubject(subject);
 			partService.saveOrUpdate(part);
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
