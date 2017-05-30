@@ -4,8 +4,8 @@ import java.util.List;
 
 import isc.intake2.online_test.entities.*;
 
-public interface IAnswearTypeDao {
-	AnswearType findById(long id);
+public interface IAnswerTypeDao {
+	AnswerType findById(long id);
 	
-	List<AnswearType> findAllAnswearType();
+	List<AnswerType> findAllAnswerType();
 }

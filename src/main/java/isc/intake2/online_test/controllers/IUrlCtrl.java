@@ -53,9 +53,9 @@ public interface IUrlCtrl {
 	
 	// answeartype
 	
-	public String getAnswearType = "/api/answeartype";
+	public String getAnswerType = "/api/answertype";
 	
-	public String getAnswaerTypeById = "/api/answeartype/{id}";
+	public String getAnswerTypeById = "/api/answertype/{id}";
 		
 
 	
