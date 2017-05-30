@@ -1,14 +1,9 @@
 //Hong
 package isc.intake2.online_test.controllers;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import isc.intake2.online_test.entities.Subject;
-import isc.intake2.online_test.services.SubjectServiceImpl;
+import isc.intake2.online_test.services.ISubjectService;
 
 @RestController
 @RequestMapping(produces="application/json")
 public class SubjectCtrl implements IUrlCtrl{
 	
 	@Autowired
-	SubjectServiceImpl subjectService;
+	ISubjectService subjectService;
 	
 	//-------------------Retrieve All Subjects Parent--------------------------------------------------------
 	
@@ -75,7 +70,7 @@ public class SubjectCtrl implements IUrlCtrl{
     	
     	currentSubject.setSubName(subject.getSubName());
     	subjectService.saveOrUpdateSubject(currentSubject);
-    	return new ResponseEntity<Subject>(HttpStatus.OK);
+    	return new ResponseEntity<Subject>(HttpStatus.CREATED);
     }
     
   //------------------- Delete a Subject --------------------------------------------------------

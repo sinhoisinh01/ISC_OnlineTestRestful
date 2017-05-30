@@ -1,11 +1,10 @@
-//Hong
-package isc.intake2.online_test.dao;
+package isc.intake2.online_test.services;
 
 import java.util.List;
 
 import isc.intake2.online_test.entities.Part;
 
-public interface IPartDao {
+public interface IPartService {
 
 	Part findById(long id);
 	
@@ -13,12 +12,11 @@ public interface IPartDao {
 	
 	void savePart(Part part);
 	
-	void saveOrUpdatePart(Part part);
+	void saveOrUpdate(Part part);
 	
 	void deletePart(Part part);
 	
-	List<Part> findAllParts(long subjectId);
-
+	List<Part> findAllPart(long subjectId);
+	
 	Boolean isPartExist(Part part);
-
 }
