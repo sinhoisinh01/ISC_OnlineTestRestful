@@ -72,6 +72,7 @@ public class PartCtrl implements IUrlCtrl{
 			newPart.setParOrder(part.getParOrder());
 			newPart.setParNote(part.getParNote());
 			newPart.setSubject(subject);
+			partService.savePart(newPart);
 			HttpHeaders headers = new HttpHeaders();
 	        headers.setLocation(ucBuilder.path(createPart).buildAndExpand(part.getId()).toUri());
 			return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
@@ -80,7 +81,8 @@ public class PartCtrl implements IUrlCtrl{
 	
 	//-------------------Update a Part--------------------------------------------------------
 	@RequestMapping(value = updatePart, method = RequestMethod.PUT)
-	public ResponseEntity<Void> updatePart(@PathVariable("id") long id,
+	public ResponseEntity<Void> updatePart(@PathVariable("subjectId") long subjectId,
+											@PathVariable("id") long id,
 											@RequestBody Part part,
 											UriComponentsBuilder ucBuilder) {
 		Part currentPart =  partService.findById(id);
@@ -89,6 +91,8 @@ public class PartCtrl implements IUrlCtrl{
 		}
 		else
 		{
+			Subject subject = subjectService.findById(subjectId);
+			part.setSubject(subject);
 			partService.saveOrUpdate(part);
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}

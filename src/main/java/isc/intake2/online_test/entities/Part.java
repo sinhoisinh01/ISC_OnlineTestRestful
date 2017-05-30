@@ -58,9 +58,27 @@ public class Part {
 			nullable = true)
 	private byte parDefault_level;
 	
-	@Column(name = "[order]")
+	@Column(name = "[order]",
+			nullable = true)
 	private int parOrder;
 	
+	public Part(long id, String parId, String parName, String parDirection, float parDefault_score,
+			byte parDefault_column, byte parDefault_level, int parOrder, String parNote, Subject subject,
+			Collection<ImageGallery> imageGallery) {
+		super();
+		this.id = id;
+		this.parId = parId;
+		this.parName = parName;
+		this.parDirection = parDirection;
+		this.parDefault_score = parDefault_score;
+		this.parDefault_column = parDefault_column;
+		this.parDefault_level = parDefault_level;
+		this.parOrder = parOrder;
+		this.parNote = parNote;
+		this.subject = subject;
+		this.imageGallery = imageGallery;
+	}
+
 	@Size(max=400)
 	@Column(name = "note",
 			nullable = true,

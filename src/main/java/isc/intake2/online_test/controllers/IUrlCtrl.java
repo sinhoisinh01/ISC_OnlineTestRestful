@@ -61,13 +61,13 @@ public interface IUrlCtrl {
 	
 	
 	//part
-	public static final String getPart = "/api/parts/{subjectId}";
+	public static final String getPart = "/api/subject/{subjectId}/parts";
 	
-	public static final String getPartById = "/api/part/{id}";
+	public static final String getPartById = "/api/subject/{id}/part";
 	
-	public static final String createPart = "/api/part/{subjectId}";
+	public static final String createPart = "/api/subject/{subjectId}/part";
 	
-	public static final String updatePart = "/api/part/{id}";
+	public static final String updatePart = "/api/subject/{subjectId}/part/{id}";
 	
 	public static final String deletePart = "/api/part/{id}";
 	
