@@ -48,5 +48,10 @@ public class PartServiceImpl implements IPartService{
 	public Boolean isPartExist(Part part){
 		return partDao.isPartExist(part);
 	}
+
+
+	public List<Part> findAllPartforQ() {
+		return partDao.findAllPartforQ();
+	}
 	
 }

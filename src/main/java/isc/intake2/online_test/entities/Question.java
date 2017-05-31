@@ -92,10 +92,10 @@ public class Question {
 	public void setPart(Part part) {
 		this.part = part;
 	}
-	public AnswerType getAnswearType() {
+	public AnswerType getAnswerType() {
 		return answerType;
 	}
-	public void setAnswearType(AnswerType answerType) {
+	public void setAnswerType(AnswerType answerType) {
 		this.answerType = answerType;
 	}
 	public long getId() {

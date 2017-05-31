@@ -40,6 +40,15 @@ public class PartCtrl implements IUrlCtrl{
 			return new ResponseEntity<List<Part>>(parts, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = getPartforQ, method = RequestMethod.GET)
+	public ResponseEntity<List<Part>> getPartforQ(){
+		List<Part> parts = partService.findAllPartforQ();
+		if(parts.isEmpty()){
+			return new ResponseEntity<List<Part>>(HttpStatus.NO_CONTENT);
+		}
+			return new ResponseEntity<List<Part>>(parts, HttpStatus.OK);
+	}
+	
 	//-------------------Retrieve One Part--------------------------------------------------------
 	@RequestMapping(value = getPartById, method = RequestMethod.GET)
 	public ResponseEntity<Part> getPartById(@PathVariable("id") long id){

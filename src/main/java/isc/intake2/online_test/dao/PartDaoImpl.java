@@ -45,4 +45,10 @@ public class PartDaoImpl extends AbstractDaoImpl<Long, Part> implements IPartDao
 	public Boolean isPartExist(Part part){
 		return findByName(part.getParName()) != null;
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Part> findAllPartforQ() {
+		Criteria criteria = createEntityCriteria();	
+		return (List<Part>) criteria.list();
+	}
 }
