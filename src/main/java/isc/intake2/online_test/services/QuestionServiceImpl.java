@@ -37,4 +37,8 @@ public class QuestionServiceImpl implements IQuestionService{
 	public List<Question> findAllQuestions(){
 		return questionDao.findAllQuestion();
 	}
+	
+	public List<Question> findAllQuestionsByPartId(long part_id){
+		return questionDao.findAllQuestionByPart(part_id);
+	}
 }

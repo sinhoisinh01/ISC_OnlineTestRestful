@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import isc.intake2.online_test.entities.AnswerType;
-import isc.intake2.online_test.entities.Option;
 import isc.intake2.online_test.entities.Part;
 import isc.intake2.online_test.entities.Question;
 import isc.intake2.online_test.services.AnswerTypeServiceImpl;
-import isc.intake2.online_test.services.IPartService;
 import isc.intake2.online_test.services.PartServiceImpl;
 import isc.intake2.online_test.services.QuestionServiceImpl;
 
@@ -115,6 +113,11 @@ public class QuestionCtrl implements IUrlCtrl  {
   
         questionService.deleteQuestion(questionService.findById(id));
         return new ResponseEntity<Question>(HttpStatus.NO_CONTENT);
+    }
+	
+	@RequestMapping(value = getQuestionByPartId, method = RequestMethod.GET)
+    public ResponseEntity<List<Question>> getQuestionByPartId(@PathVariable("part_id") long part_id) {
+        return new ResponseEntity<List<Question>>(questionService.findAllQuestionsByPartId(part_id), HttpStatus.OK);
     }
 	
 }

@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import com.beust.jcommander.internal.Nullable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -26,13 +27,12 @@ public class Subject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@Size(max = 20)
 	@Column(name = "sub_id",
-			nullable = true,
-			length = 20)
-	private String subId;
+			nullable = true)
+	private Long subId;
 	
 	@Size(min = 3, max = 100)
 	@Column(name = "name",
@@ -52,19 +52,19 @@ public class Subject {
 	
 	/*End------------------Recursive relation mapping----------------*/
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getSubId() {
+	public Long getSubId() {
 		return subId;
 	}
 
-	public void setSubId(String subId) {
+	public void setSubId(Long subId) {
 		this.subId = subId;
 	}
 
@@ -97,54 +97,20 @@ public class Subject {
 		super();
 	}
 	
-	public Subject(long id, String subId, String subName) {
+	public Subject(Long id, Long subId, String subName) {
 		super();
 		this.id = id;
 		this.subId = subId;
 		this.subName = subName;
 	}
 
-	public Subject(long id, String subId, String subName, Subject parentSub, Collection<Subject> childSubs) {
+	public Subject(Long id, Long subId, String subName, Subject parentSub, Collection<Subject> childSubs) {
 		super();
 		this.id = id;
 		this.subId = subId;
 		this.subName = subName;
 		this.parentSub = parentSub;
 		this.childSubs = childSubs;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((subId == null) ? 0 : subId.hashCode());
-		result = prime * result + ((subName == null) ? 0 : subName.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Subject other = (Subject) obj;
-		if (id != other.id)
-			return false;
-		if (subId == null) {
-			if (other.subId != null)
-				return false;
-		} else if (!subId.equals(other.subId))
-			return false;
-		if (subName == null) {
-			if (other.subName != null)
-				return false;
-		} else if (!subName.equals(other.subName))
-			return false;
-		return true;
 	}
 
 	@Override
