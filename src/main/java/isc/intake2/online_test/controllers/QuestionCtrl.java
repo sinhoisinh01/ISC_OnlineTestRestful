@@ -64,7 +64,7 @@ public class QuestionCtrl implements IUrlCtrl  {
         Part part = partService.findById(partId);
         AnswerType ans = answearTypeService.findById(answerTypeId);
         
-        AnswerType anstypr = new AnswerType(ans.getId(), ans.getAnstId(), ans.getAnstName(), ans.getAnstOrder(), ans.getAnstSample());
+        //AnswerType anstypr = new AnswerType(ans.getId(), ans.getAnstId(), ans.getAnstName(), ans.getAnstOrder(), ans.getAnstSample());
         
 		Question newQuestion = new Question();
 		newQuestion.setQueContent(question.getQueContent());
@@ -77,14 +77,13 @@ public class QuestionCtrl implements IUrlCtrl  {
 		newQuestion.setQueReference(question.getQueReference());
 		newQuestion.setQueOrder(question.getQueOrder());
 		newQuestion.setPart(part);
-		newQuestion.setAnswerType(anstypr);
-		
-		System.out.print("test la" + newQuestion.getPart() + "answaer la !!!" + newQuestion.getAnswerType().getAnstId() + newQuestion.getAnswerType().getAnstName());
+		newQuestion.setAnswerType(ans);
 		
         questionService.saveQuestion(newQuestion);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path(createQuestion).buildAndExpand(question.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        System.out.print("test la" + newQuestion.getPart() + "answaer la !!!" + newQuestion.getAnswerType().getAnstId() + newQuestion.getAnswerType().getAnstName());
+        System.out.print("test la" + newQuestion.getPart() + "answaer la !!!" + newQuestion.getAnswerType().getAnstId() + newQuestion.getAnswerType().getAnstName());
+
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 	
 	
