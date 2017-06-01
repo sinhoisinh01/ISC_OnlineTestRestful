@@ -49,7 +49,7 @@ public class Question {
 	
 	@Column(name="media",
 			nullable=false,
-			length = 50)
+			length = 255)
 	private String queMedia;
 	
 	@Column(name="reference",

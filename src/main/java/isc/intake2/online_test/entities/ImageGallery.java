@@ -27,7 +27,7 @@ public class ImageGallery {
 	@Column(name = "url",
 			unique = true,
 			nullable = false,
-			length = 50)
+			length = 255)
 	private String imageURL;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
