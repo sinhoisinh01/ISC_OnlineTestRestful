@@ -32,6 +32,8 @@ public interface IUrlCtrl {
 	
 	public String getQuestionById = "/api/question/{id}";
 	
+	public String getQuestionByPartId = "/api/questions/{part_id}";
+	
 	public String createQuestion = "/api/part/{partId}/answerType/{answerTypeId}/question";
 	
 	public String updateQuestion = "/api/question/{id}";
