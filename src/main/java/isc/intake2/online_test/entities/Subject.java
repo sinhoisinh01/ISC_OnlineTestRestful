@@ -16,6 +16,7 @@ import javax.validation.constraints.Size;
 
 import com.beust.jcommander.internal.Nullable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.GeneratedValue;
@@ -27,12 +28,7 @@ public class Subject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Size(max = 20)
-	@Column(name = "sub_id",
-			nullable = true)
-	private Long subId;
+	private long id;
 	
 	@Size(min = 3, max = 100)
 	@Column(name = "name",
@@ -52,21 +48,14 @@ public class Subject {
 	
 	/*End------------------Recursive relation mapping----------------*/
 	
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public Long getSubId() {
-		return subId;
-	}
-
-	public void setSubId(Long subId) {
-		this.subId = subId;
-	}
 
 	public String getSubName() {
 		return subName;
@@ -97,25 +86,19 @@ public class Subject {
 		super();
 	}
 	
-	public Subject(Long id, Long subId, String subName) {
+	public Subject(long id, Long subId, String subName) {
 		super();
 		this.id = id;
-		this.subId = subId;
 		this.subName = subName;
 	}
 
-	public Subject(Long id, Long subId, String subName, Subject parentSub, Collection<Subject> childSubs) {
+	public Subject(long id, Long subId, String subName, Subject parentSub, Collection<Subject> childSubs) {
 		super();
 		this.id = id;
-		this.subId = subId;
 		this.subName = subName;
 		this.parentSub = parentSub;
 		this.childSubs = childSubs;
 	}
 
-	@Override
-	public String toString() {
-		return "Subject [id=" + id + ", subId=" + subId + ", subName=" + subName + "]";
-	}
 
 }
