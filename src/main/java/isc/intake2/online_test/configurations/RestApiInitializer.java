@@ -39,7 +39,7 @@ public class RestApiInitializer extends AbstractAnnotationConfigDispatcherServle
         return multipartConfigElement;
     }
  
-    private static final String LOCATION = "C:\\xampp\\htdocs\\ISC_OnlineTestAdmin\\assets\\images"; // Temporary location where files will be stored
+    private static final String LOCATION = "C:\\Users\\TEMP"; // Temporary location where files will be stored
  
     private static final long MAX_FILE_SIZE = 5242880; // 5MB : Max file size.
                                                         // Beyond that size spring will throw exception.
