@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: ViSinh
+=======
+Built-By: ASUS
+>>>>>>> 729845191143249abcc343f2186d44872234079e
 Build-Jdk: 1.8.0_121
 Created-By: Maven Integration for Eclipse
 
