@@ -14,4 +14,6 @@ public interface IQuestionDao {
 	void deleteQuestion(Question question);
 	
 	List<Question> findAllQuestion();
+
+	List<Question> findAllQuestionByPart(long part_id);
 }
