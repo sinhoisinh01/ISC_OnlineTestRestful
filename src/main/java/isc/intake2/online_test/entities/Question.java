@@ -64,7 +64,7 @@ public class Question {
 	
 	public Question(long id, String queContent, Boolean queIsshuffle, Float queScore, int queOpt_Column,
 			Boolean queIsBank, int queLevel, String queMedia, String queReference, int queOrder,
-			AnswearType answearType) {
+			AnswerType answerType) {
 		super();
 		this.id = id;
 		this.queContent = queContent;
@@ -76,19 +76,27 @@ public class Question {
 		this.queMedia = queMedia;
 		this.queReference = queReference;
 		this.queOrder = queOrder;
-		this.answearType = answearType;
+		this.answerType = answerType;
 	}
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "question_answear_type_id", nullable = false)
-	private AnswearType answearType;
+	@JoinColumn(name = "question_answer_type_id", nullable = false)
+	private AnswerType answerType;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "question_part_id", nullable = false)
+	private Part part;
 	
-	
-	public AnswearType getAnswearType() {
-		return answearType;
+	public Part getPart() {
+		return part;
 	}
-	public void setAnswearType(AnswearType answearType) {
-		this.answearType = answearType;
+	public void setPart(Part part) {
+		this.part = part;
+	}
+	public AnswerType getAnswerType() {
+		return answerType;
+	}
+	public void setAnswerType(AnswerType answerType) {
+		this.answerType = answerType;
 	}
 	public long getId() {
 		return id;
@@ -153,6 +161,37 @@ public class Question {
 	
 	public Question() {
 		super();
+	}
+	/**
+	 * @param id
+	 * @param queContent
+	 * @param queIsshuffle
+	 * @param queScore
+	 * @param queOpt_Column
+	 * @param queIsBank
+	 * @param queLevel
+	 * @param queMedia
+	 * @param queReference
+	 * @param queOrder
+	 * @param answerType
+	 * @param part
+	 */
+	public Question(long id, String queContent, Boolean queIsshuffle, Float queScore, int queOpt_Column,
+			Boolean queIsBank, int queLevel, String queMedia, String queReference, int queOrder, AnswerType answerType,
+			Part part) {
+		super();
+		this.id = id;
+		this.queContent = queContent;
+		this.queIsshuffle = queIsshuffle;
+		this.queScore = queScore;
+		this.queOpt_Column = queOpt_Column;
+		this.queIsBank = queIsBank;
+		this.queLevel = queLevel;
+		this.queMedia = queMedia;
+		this.queReference = queReference;
+		this.queOrder = queOrder;
+		this.answerType = answerType;
+		this.part = part;
 	}
 	
 	

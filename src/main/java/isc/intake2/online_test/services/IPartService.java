@@ -18,5 +18,7 @@ public interface IPartService {
 	
 	List<Part> findAllPart(long subjectId);
 	
+	List<Part> findAllPartforQ();
+	
 	Boolean isPartExist(Part part);
 }

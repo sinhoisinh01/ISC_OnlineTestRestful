@@ -7,6 +7,8 @@ import isc.intake2.online_test.entities.Part;
 
 public interface IPartDao {
 
+	
+	
 	Part findById(long id);
 	
 	Part findByName(String name);
@@ -18,6 +20,8 @@ public interface IPartDao {
 	void deletePart(Part part);
 	
 	List<Part> findAllParts(long subjectId);
+	
+	List<Part> findAllPartforQ();
 
 	Boolean isPartExist(Part part);
 

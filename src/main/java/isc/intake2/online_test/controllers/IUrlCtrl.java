@@ -32,7 +32,7 @@ public interface IUrlCtrl {
 	
 	public String getQuestionById = "/api/question/{id}";
 	
-	public String createQuestion = "/api/question";
+	public String createQuestion = "/api/part/{partId}/answerType/{answerTypeId}/question";
 	
 	public String updateQuestion = "/api/question/{id}";
 	
@@ -53,9 +53,9 @@ public interface IUrlCtrl {
 	
 	// answeartype
 	
-	public String getAnswearType = "/api/answeartype";
+	public String getAnswerType = "/api/answertype";
 	
-	public String getAnswaerTypeById = "/api/answeartype/{id}";
+	public String getAnswerTypeById = "/api/answertype/{id}";
 		
 
 	
@@ -70,6 +70,8 @@ public interface IUrlCtrl {
 	public static final String updatePart = "/api/subject/{subjectId}/part/{id}";
 	
 	public static final String deletePart = "/api/part/{id}";
+	
+	public static final String getPartforQ = "/api/parts";
 	
 	//image gallery
 	public static final String getImage = "/api/part/{partId}/image";

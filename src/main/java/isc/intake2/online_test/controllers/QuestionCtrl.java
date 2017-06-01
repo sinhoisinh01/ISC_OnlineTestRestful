@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import isc.intake2.online_test.entities.AnswerType;
 import isc.intake2.online_test.entities.Option;
+import isc.intake2.online_test.entities.Part;
 import isc.intake2.online_test.entities.Question;
+import isc.intake2.online_test.services.AnswerTypeServiceImpl;
+import isc.intake2.online_test.services.IPartService;
+import isc.intake2.online_test.services.PartServiceImpl;
 import isc.intake2.online_test.services.QuestionServiceImpl;
 
 @RestController
@@ -22,6 +27,12 @@ import isc.intake2.online_test.services.QuestionServiceImpl;
 		produces={"application/json; charset=UTF-8"}
 	)
 public class QuestionCtrl implements IUrlCtrl  {
+	
+	@Autowired
+	private AnswerTypeServiceImpl answearTypeService;
+	
+	@Autowired
+	private PartServiceImpl partService;
 	
 	@Autowired
 	QuestionServiceImpl questionService;
@@ -48,10 +59,31 @@ public class QuestionCtrl implements IUrlCtrl  {
 		}
 	
 	@RequestMapping(value = createQuestion, method = RequestMethod.POST)
-    public ResponseEntity<Void> add(@RequestBody Question question, UriComponentsBuilder ucBuilder) {
-           
-        questionService.saveQuestion(question);
+    public ResponseEntity<Void> add(@RequestBody Question question,
+    								@PathVariable("partId") long partId,
+    								@PathVariable("answerTypeId") long answerTypeId,
+    										UriComponentsBuilder ucBuilder) {
+        Part part = partService.findById(partId);
+        AnswerType ans = answearTypeService.findById(answerTypeId);
         
+        AnswerType anstypr = new AnswerType(ans.getId(), ans.getAnstId(), ans.getAnstName(), ans.getAnstOrder(), ans.getAnstSample());
+        
+		Question newQuestion = new Question();
+		newQuestion.setQueContent(question.getQueContent());
+		newQuestion.setQueIsshuffle(question.getQueIsshuffle());
+		newQuestion.setQueScore(question.getQueScore());
+		newQuestion.setQueOpt_Column(question.getQueOpt_Column());
+		newQuestion.setQueIsBank(question.getQueIsBank());
+		newQuestion.setQueLevel(question.getQueLevel());
+		newQuestion.setQueMedia(question.getQueMedia());
+		newQuestion.setQueReference(question.getQueReference());
+		newQuestion.setQueOrder(question.getQueOrder());
+		newQuestion.setPart(part);
+		newQuestion.setAnswerType(anstypr);
+		
+		System.out.print("test la" + newQuestion.getPart() + "answaer la !!!" + newQuestion.getAnswerType().getAnstId() + newQuestion.getAnswerType().getAnstName());
+		
+        questionService.saveQuestion(newQuestion);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path(createQuestion).buildAndExpand(question.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
